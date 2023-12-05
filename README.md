@@ -17,8 +17,13 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
      
 # 目次
 
-- [事前準備](#事前準備)
-  * [PLATEAU SDK Toolkits for Unity のインストール](#plateau-sdk-toolkits-for-unity-のインストール)
+
+- [セットアップ環境](#セットアップ環境)
+  *  [検証済環境](#検証済環境)
+- [導入手順](#導入手順)
+  * [Unityでのプロジェクト作成](#unityでのプロジェクト作成)
+  * [PLATEAU SDK for Unityのインストール](#plateau-sdk-for-unityのインストール)
+  * [PLATEAU SDK Maps Toolkit for Unity のインストール](#plateau-sdk-maps-toolkit-for-unity-のインストール)
   * [PLATEAU SDK for Unity を使って都市モデルをインポート](#plateau-sdk-for-unity-を使って都市モデルをインポート)
  
 - [利用手順](#利用手順)
@@ -40,14 +45,80 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
   * [3. GISデータ読み込み](#3-gisデータ読み込み)
     
 
+# セットアップ環境
+## 検証済環境
+### 推奨OS環境
+- Windows11
+- macOS Ventura 13.2
 
-# 事前準備
+### Unity Version
+- Unity 2021.3.31f1 (2023/10/10現在 2021 LTSバージョン)
+    - Unity 2021.3系であれば問題なく動作する見込みです。
 
-## PLATEAU SDK Toolkits for Unity のインストール
+### Rendering Pipeline
+- URP
+- HDRP
 
-Maps Toolkit は PLATEAU SDK Toolkits for Unity の一つのツールキットとして提供されます。
+**Built-in Rendering Pipelineでは動作しません。**
 
-[こちら](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity#3-plateau-sdk-toolkits-for-unity-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)を参照して PLATEAU SDK Toolkits for Unity をインストールしてください。
+## PLATEAU SDKバージョン
+- [version 2.0.3-alpha](https://github.com/Synesthesias/PLATEAU-SDK-for-Unity/releases/tag/v2.0.3-alpha)
+
+## 導入手順
+
+### Unityでのプロジェクト作成
+
+Unity Version 2021.3.27f1(LTS)により新たにUnityプロジェクトを作成してください。  
+その際のテンプレートとして「3D(URP)」もしくは「3D(HDRP)」を選択してください。
+
+<p align="center">
+<img width="493" alt="スクリーンショット 2023-07-12 19 18 33" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b45abddf-fe60-4dbd-9127-910fcb916ed4">
+</p>
+
+
+### PLATEAU SDK for Unityのインストール
+
+PLATEAU SDK-Toolkits for Unityを利用するにあたり、事前にPLATEAU SDKのインストールが必要となります。  
+TarballかGithub URLからインストールをする必要があります。詳細はPLATEAU SDKのドキュメンテーションをご参照ください。  
+[PLATEAU SDK for Unity利用マニュアル](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/)
+
+PLATEAU SDKを利用し、3D都市モデルをUnityシーン上へ配置してください。
+
+
+### PLATEAU SDK Maps Toolkit for Unity のインストール
+
+1. Unityエディタを開き、「Window」メニューから「Package Manager」を選択します。
+2. 「Package Manager」ウィンドウが開いたら、右上にある「＋」ボタンをクリックします。
+3. ドロップダウンメニューから「Add package from tarball...」を選択します。
+4. ファイル選択ダイアログが開いたら、インストールしたいパッケージの.tar.gzファイルを探し、選択します。
+<p align="center">
+<img width="493" alt="スクリーンショット 2023-07-12 19 18 42" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b9076829-b7cb-45db-a5a1-5ce6dbc435b1">
+</p>
+
+新しいプロジェクトでPLATEAU SDK-Toolkits for Unityをインストールする際は、入力システムについての確認ダイアログが表示されます場合があります。その場合は「Yes」を選択してください。
+Unityエディタが再起動します。
+
+<p align="center">
+<img width="500" alt="InputDialog" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/120234a9-1457-46f5-9a71-0c43febd44a2">
+</p>
+
+[ダウンロードリンクはこちら](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/tag/v0.2.1)
+
+
+### 4. Cesium for Unity のインストール
+
+PLATEAU SDK-ToolkitsではCesium for Unity が必要となるため、事前にインストールしていただく必要があります。下記のページでよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
+
+- [Cesium for Unity v1.6.3](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.6.3)
+
+ダウンロードした tgz ファイルは Maps Toolkit を使用する Unity プロジェクトのフォルダ内に配置することを推奨します。Unity プロジェクトのフォルダに配置することで、相対パスでパッケージを参照することができ、フォルダを移動したり別の環境での同じプロジェクトの利用が容易になります。Unityプロジェクト外を参照すると、絶対パスがmanifest.jsonに書き込まれることになり、少し不便になり、依存解決のエラーなどが将来的に発生してしまう可能性があります。
+
+Windows > PackageManagerの「Add package from tarball…」を選択し、ダウンロードした Cesium for Unity の tgz ファイルを選択します。
+
+<p align="center">
+<img width="400" alt="top_manual_1_packagemanager" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bf577dca-0d2f-4959-948a-0e8d8dfa899d">
+</p>
+
 
 ## PLATEAU SDK for Unity を使って都市モデルをインポート
 
@@ -498,3 +569,18 @@ GISデータは緯度経度を用いるデータであり、GISデータの読�
 > **Note**
 > GISデータはファイルサイズに比例して読み込み時間が長くなります。シェープファイルの合計ファイルサイズは40MB程度以下を推奨します。<br>
 > シェープファイルからインポートしたモデルの高さはインポートした際に設定されない場合もあるため、手動で適切な高さに設定する必要があります。
+
+
+## ライセンス
+- 本リポジトリはMITライセンスで提供されています。
+- 本システムの開発はユニティ・テクノロジーズ・ジャパン株式会社が行っています。
+- ソースコードおよび関連ドキュメントの著作権は国土交通省に帰属します。
+
+## 注意事項/利用規約
+- 本ツールはベータバージョンです。バグ、動作不安定、予期せぬ挙動等が発生する可能性があり、動作保証はできかねますのでご了承ください。
+- 処理をしたあとにToolkitsをアンインストールした場合、建物の表示が壊れるなど挙動がおかしくなる場合がございます。
+- 本ツールをアップデートした際は、一度Unity エディタを再起動してご利用ください。
+- パフォーマンスの観点から、3D都市モデルをダウンロード・インポートする際は、3㎞2範囲内とすることを推奨しています。
+- インポートエリアの広さや地物の種類（建物、道路、災害リスクなど）が増えると処理負荷が高くなる可能性があります。
+- 本リポジトリの内容は予告なく変更・削除する可能性があります。
+- 本リポジトリの利用により生じた損失及び損害等について、国土交通省はいかなる責任も負わないものとします。
