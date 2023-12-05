@@ -15,6 +15,15 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
         - シェープファイルのDBFファイルに含まれる座標情報を用いてCesium for Unity上で自動的に配置することが可能です。
         - シェープファイルのDBFファイル及びGeoJSONのプロパティで定義される属性情報もUnity上で取り扱うことができます。
      
+### 更新履歴
+
+|  2023/12/13  |  Maps Toolkitを専用パッケージに分割|
+| :--- | :--- |
+|  2023/10/28  |  Maps Toolkit初回リリース|
+
+
+
+     
 # 目次
 
 
@@ -24,6 +33,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
   * [Unityでのプロジェクト作成](#unityでのプロジェクト作成)
   * [PLATEAU SDK for Unityのインストール](#plateau-sdk-for-unityのインストール)
   * [PLATEAU SDK Maps Toolkit for Unity のインストール](#plateau-sdk-maps-toolkit-for-unity-のインストール)
+  * [Cesium for Unity のインストール](#cesium-for-unity-のインストール)
   * [PLATEAU SDK for Unity を使って都市モデルをインポート](#plateau-sdk-for-unity-を使って都市モデルをインポート)
  
 - [利用手順](#利用手順)
@@ -52,7 +62,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 - macOS Ventura 13.2
 
 ### Unity Version
-- Unity 2021.3.31f1 (2023/10/10現在 2021 LTSバージョン)
+- Unity 2021.3.30
     - Unity 2021.3系であれば問題なく動作する見込みです。
 
 ### Rendering Pipeline
@@ -64,9 +74,9 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 ## PLATEAU SDKバージョン
 - [version 2.0.3-alpha](https://github.com/Synesthesias/PLATEAU-SDK-for-Unity/releases/tag/v2.0.3-alpha)
 
-## 導入手順
+# 導入手順
 
-### Unityでのプロジェクト作成
+## Unityでのプロジェクト作成
 
 Unity Version 2021.3.27f1(LTS)により新たにUnityプロジェクトを作成してください。  
 その際のテンプレートとして「3D(URP)」もしくは「3D(HDRP)」を選択してください。
@@ -76,16 +86,16 @@ Unity Version 2021.3.27f1(LTS)により新たにUnityプロジェクトを作成
 </p>
 
 
-### PLATEAU SDK for Unityのインストール
+## PLATEAU SDK for Unityのインストール
 
-PLATEAU SDK-Toolkits for Unityを利用するにあたり、事前にPLATEAU SDKのインストールが必要となります。  
+PLATEAU SDK Maps Toolkit for Unityを利用するにあたり、事前にPLATEAU SDKのインストールが必要となります。  
 TarballかGithub URLからインストールをする必要があります。詳細はPLATEAU SDKのドキュメンテーションをご参照ください。  
 [PLATEAU SDK for Unity利用マニュアル](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/)
 
 PLATEAU SDKを利用し、3D都市モデルをUnityシーン上へ配置してください。
 
 
-### PLATEAU SDK Maps Toolkit for Unity のインストール
+## PLATEAU SDK Maps Toolkit for Unity のインストール
 
 1. Unityエディタを開き、「Window」メニューから「Package Manager」を選択します。
 2. 「Package Manager」ウィンドウが開いたら、右上にある「＋」ボタンをクリックします。
@@ -95,7 +105,7 @@ PLATEAU SDKを利用し、3D都市モデルをUnityシーン上へ配置して�
 <img width="493" alt="スクリーンショット 2023-07-12 19 18 42" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b9076829-b7cb-45db-a5a1-5ce6dbc435b1">
 </p>
 
-新しいプロジェクトでPLATEAU SDK-Toolkits for Unityをインストールする際は、入力システムについての確認ダイアログが表示されます場合があります。その場合は「Yes」を選択してください。
+新しいプロジェクトでPLATEAU SDK Maps Toolkit for Unityをインストールする際は、入力システムについての確認ダイアログが表示されます場合があります。その場合は「Yes」を選択してください。
 Unityエディタが再起動します。
 
 <p align="center">
@@ -105,9 +115,9 @@ Unityエディタが再起動します。
 [ダウンロードリンクはこちら](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/tag/v0.2.1)
 
 
-### 4. Cesium for Unity のインストール
+## Cesium for Unity のインストール
 
-PLATEAU SDK-ToolkitsではCesium for Unity が必要となるため、事前にインストールしていただく必要があります。下記のページでよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
+PLATEAU SDK Maps Toolkit for Unityでは一部の機能においてCesium for Unity が必要となるため、事前にインストールしていただく必要があります。下記のページでよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
 
 - [Cesium for Unity v1.6.3](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.6.3)
 
