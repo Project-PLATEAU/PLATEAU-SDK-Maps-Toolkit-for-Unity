@@ -74,7 +74,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 **Built-in Rendering Pipelineでは動作しません。**
 
 ## PLATEAU SDKバージョン
-- [version 2.0.3-alpha](https://github.com/Synesthesias/PLATEAU-SDK-for-Unity/releases/tag/v2.0.3-alpha)
+- [PLATEAU SDK for Unity v2.2.1-alpha](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases)
 
 # 導入手順
 
