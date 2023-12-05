@@ -131,7 +131,7 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 
 PLATEAU SDK for Unityをインストールしていていない場合は、[マニュアルの手順](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/manual/Installation.html)に従ってインストールします。
 
-同じく、PLATEAU SDK for Unity[「都市モデルのインポート」の手順](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/manual/ImportCityModels.html)に従って都市モデルをUnityエディターへインポートします。
+同じく、PLATEAU SDK for Unity[「都市モデルのインポート」の手順](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/manual/ImportCityModels.html)に従って都市モデルをUnityエディターへインポートして、本Toolkitの利用を開始してください。
 
 # **利用手順**
 
