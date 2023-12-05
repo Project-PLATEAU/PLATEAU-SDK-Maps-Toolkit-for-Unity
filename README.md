@@ -80,7 +80,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 ## Unityでのプロジェクト作成
 
-Unity Version 2021.3.27f1(LTS)により新たにUnityプロジェクトを作成してください。  
+Unity Version 2021.3.30により新たにUnityプロジェクトを作成してください。  
 その際のテンプレートとして「3D(URP)」もしくは「3D(HDRP)」を選択してください。
 
 <img width="493" alt="スクリーンショット 2023-07-12 19 18 33" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b45abddf-fe60-4dbd-9127-910fcb916ed4">
