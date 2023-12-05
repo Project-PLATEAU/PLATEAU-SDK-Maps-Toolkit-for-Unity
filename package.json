@@ -1,0 +1,17 @@
+{
+  "name": "com.unity.plateautoolkit.maps",
+  "displayName": "PLATEAU Toolkit Maps for Unity",
+  "version": "0.2.3-alpha1",
+  "unity": "2021.3",
+  "description": "Maps Toolkit for PLATEAU",
+  "keywords": [
+    "Toolbox",
+    "Plateau",
+    "AR"
+  ],
+  "category": "utility",
+  "samples": [],
+  "dependencies": {
+    "com.synesthesias.plateau-unity-sdk": "1.0.0"
+  }
+}

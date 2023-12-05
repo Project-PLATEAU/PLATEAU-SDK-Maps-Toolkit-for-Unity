@@ -1,0 +1,39 @@
+{
+    "name": "PlateauToolkit.Maps.Editor",
+    "rootNamespace": "PlateauToolkit.Maps.Editor",
+    "references": [
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:33a64a05e6961c84c910a8057df1e46a",
+        "GUID:2f611b55791fe6e49aafec04e8adcb97",
+        "GUID:f31ea2bc62aff8541a07efe6906b6778",
+        "GUID:f09b313daad8e2a4a87b98b5000a4038",
+        "GUID:63cab5ddbd23cf34ca160a9b3d74438d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.cesium.unity",
+            "expression": "",
+            "define": "CESIUM_FOR_UNITY"
+        },
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "UNITY_URP"
+        },
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "",
+            "define": "UNITY_HDRP"
+        }
+    ],
+    "noEngineReferences": false
+}
