@@ -101,7 +101,7 @@ PLATEAU SDKを利用し、3D都市モデルをUnityシーン上へ配置して�
 2. 「Package Manager」ウィンドウが開いたら、右上にある「＋」ボタンをクリックします。
 3. ドロップダウンメニューから「Add package from tarball...」を選択します。
 4. ファイル選択ダイアログが開いたら、インストールしたいパッケージの.tar.gzファイルを探し、選択します。
-5. 
+   
 <img width="493" alt="スクリーンショット 2023-07-12 19 18 42" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b9076829-b7cb-45db-a5a1-5ce6dbc435b1">
 
 新しいプロジェクトでPLATEAU SDK-Maps-Toolkit for Unityをインストールする際は、入力システムについての確認ダイアログが表示されます場合があります。その場合は「Yes」を選択してください。
