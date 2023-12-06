@@ -2,18 +2,17 @@
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
-using PlateauToolkit.Editor;
 #if CESIUM_FOR_UNITY
 using CesiumForUnity;
 #endif
 using PLATEAU.CityInfo;
 using System;
 using System.IO;
-using PlateauToolkit.Foundation.Editor;
 using System.Collections;
 using UnityEngine.Networking;
 using System.Net;
 using System.IO.Compression;
+using System.Linq;
 
 namespace PlateauToolkit.Maps.Editor
 {
@@ -91,7 +90,6 @@ namespace PlateauToolkit.Maps.Editor
 #if UNITY_EDITOR_WIN
             m_IfcFileLoader.SetIfcConvertPath(m_SystemPathToProject + "/IfcConvert.exe");
 #else
-            bool macChipM1 = false;
             if (CheckMacChipType.GetMacChipType().Contains("M1"))
             {
                 m_IfcFileLoader.SetIfcConvertPath(m_SystemPathToProject + "/IfcConvert-macos-64-M1");
@@ -103,11 +101,31 @@ namespace PlateauToolkit.Maps.Editor
 #endif
         }
 
+        void HeaderLogo(float windowWidth)
+        {
+            EditorGUILayout.Space(6f);
+
+            var logoTexture = (Texture2D)AssetDatabase.LoadAssetAtPath(
+                    PlateauMapsPaths.PlateauLogo, typeof(Texture2D));
+            float width = Mathf.Min(windowWidth - 20, 260f);
+            float height = (float)logoTexture.height / logoTexture.width * width;
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                GUILayout.FlexibleSpace();
+                Rect logoRect = EditorGUILayout.GetControlRect(GUILayout.Width(width), GUILayout.Height(height));
+                GUI.DrawTexture(logoRect, logoTexture);
+                GUILayout.FlexibleSpace();
+            }
+
+            EditorGUILayout.Space(10f);
+        }
+
         void OnGUI()
         {
             #region Header
             m_Window ??= GetWindow<PlateauToolkitMapsWindow>();
-            PlateauToolkitEditorGUILayout.HeaderLogo(m_Window.position.width);
+            HeaderLogo(m_Window.position.width);
             if (m_IfcFileLoader == null)
             {
                 m_IfcFileLoader = new IfcFileLoader();
@@ -117,8 +135,8 @@ namespace PlateauToolkit.Maps.Editor
 
             bool TabButton(string iconPath, Tab tab)
             {
-                Color? buttonColor = tab == m_CurrentTab ? Color.cyan : null;
-                var imageButtonGUILayout = new PlateauToolkitImageButtonGUI(k_TabButtonSize, k_TabButtonSize);
+                UnityEngine.Color? buttonColor = tab == m_CurrentTab ? UnityEngine.Color.cyan : null;
+                var imageButtonGUILayout = new PlateauMapsImageButtonGUI(k_TabButtonSize, k_TabButtonSize);
                 if (imageButtonGUILayout.Button(iconPath, buttonColor))
                 {
                     m_CurrentTab = tab;
@@ -128,7 +146,7 @@ namespace PlateauToolkit.Maps.Editor
                 return false;
             }
 
-            PlateauToolkitEditorGUILayout.GridLayout(
+            PlateauMapsEditorGuiLayout.GridLayout(
                m_Window.position.width,
                k_TabButtonSize,
                k_TabButtonSize,
@@ -145,7 +163,7 @@ namespace PlateauToolkit.Maps.Editor
             {
                 case Tab.MapTools:
                     m_PositionMode = PlateauMapsPositioningMode.PlateauModel;
-                    PlateauToolkitEditorGUILayout.Header("PLATEAUモデル位置合わせ");
+                    PlateauMapsEditorGuiLayout.Header("PLATEAUモデル位置合わせ");
 #if CESIUM_FOR_UNITY
                     EditorGUILayout.Space();
                     EditorGUILayout.HelpBox(PlateauToolkitMapsConstants.s_MapsPositioning, MessageType.Info);
@@ -188,7 +206,7 @@ namespace PlateauToolkit.Maps.Editor
                     break;
                 case Tab.IfcTools:
                     m_PositionMode = PlateauMapsPositioningMode.IfcModel;
-                    PlateauToolkitEditorGUILayout.Header("IFCモデルの読み込み");
+                    PlateauMapsEditorGuiLayout.Header("IFCモデルの読み込み");
                     EditorGUILayout.Space();
                     EditorGUILayout.HelpBox(PlateauToolkitMapsConstants.s_IfcTitle, MessageType.Info);
                     EditorGUILayout.Space();
@@ -264,7 +282,7 @@ namespace PlateauToolkit.Maps.Editor
                         }
                     }
 
-                    PlateauToolkitEditorGUILayout.Header("IFCモデルをCesium 3D Tilesetsと位置合せ");
+                    PlateauMapsEditorGuiLayout.Header("IFCモデルをCesium 3D Tilesetsと位置合せ");
 #if CESIUM_FOR_UNITY
                     EditorGUILayout.Space();
                     EditorGUILayout.HelpBox(PlateauToolkitMapsConstants.s_IfcPositioning, MessageType.Info);
@@ -404,7 +422,7 @@ namespace PlateauToolkit.Maps.Editor
                     EditorGUILayout.HelpBox("この機能を利用するにはCesium For Unityが必要です", MessageType.Info);
 #endif
                     EditorGUILayout.Space();
-                    PlateauToolkitEditorGUILayout.Header(PlateauToolkitMapsConstants.s_IfcSettings);
+                    PlateauMapsEditorGuiLayout.Header(PlateauToolkitMapsConstants.s_IfcSettings);
                     EditorGUILayout.Space();
 
                     if (GUILayout.Button("IFCローダーのファイル指定"))
@@ -436,7 +454,7 @@ namespace PlateauToolkit.Maps.Editor
                     }
                         break;
                 case Tab.GisTools:
-                    PlateauToolkitEditorGUILayout.Header("GISデータ読み込み");
+                    PlateauMapsEditorGuiLayout.Header("GISデータ読み込み");
 #if CESIUM_FOR_UNITY
                     EditorGUILayout.Space();
                     EditorGUILayout.HelpBox(PlateauToolkitMapsConstants.s_GisOverview, MessageType.Info);
@@ -534,21 +552,21 @@ namespace PlateauToolkit.Maps.Editor
 
         void DownloadIfcExe()
         {
-
+            string downloadUrl;
+            string savePath;
 #if UNITY_EDITOR_WIN
-            string downloadUrl = "https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-f0e03c7-win64.zip";
-            string savePath = "Assets/IfcConvert/IfcConvert-v0.7.0-f0e03c7-win64.zip";
+            downloadUrl = "https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-f0e03c7-win64.zip";
+            savePath = "Assets/IfcConvert/IfcConvert-v0.7.0-f0e03c7-win64.zip";
 #else
-            bool macChipM1 = false;
             if (CheckMacChipType.GetMacChipType().Contains("M1"))
             {
-                string downloadUrl = "https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-f0e03c7-macosm164.zip";
-                string savePath = "Assets/IfcConvert/IfcConvert-v0.7.0-f0e03c7-macosm164.zip";
+                downloadUrl = "https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-f0e03c7-macosm164.zip";
+                savePath = "Assets/IfcConvert/IfcConvert-v0.7.0-f0e03c7-macosm164.zip";
             }
             else
             {
-                string downloadUrl = "https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-f0e03c7-macos64.zip";
-                string savePath = "Assets/IfcConvert/IfcConvert-v0.7.0-f0e03c7-macos64.zip";
+                downloadUrl = "https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-f0e03c7-macos64.zip";
+                savePath = "Assets/IfcConvert/IfcConvert-v0.7.0-f0e03c7-macos64.zip";
             }
 #endif
 

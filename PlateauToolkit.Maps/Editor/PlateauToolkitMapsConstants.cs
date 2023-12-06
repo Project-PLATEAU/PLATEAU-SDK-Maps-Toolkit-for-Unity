@@ -108,4 +108,11 @@ namespace PlateauToolkit.Maps.Editor
         #endregion
 
     }
+
+    public static class PlateauMapsPaths
+    {
+        const string k_SpritesFolder = "Packages/com.unity.plateautoolkit.maps/PlateauToolkit.Maps/Editor/Sprites";
+        public static string PlateauLogo { get; } = $"{k_SpritesFolder}/PlateauLogo.png";
+
+    }
 }
