@@ -5,9 +5,9 @@ https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/1377324
 PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報との連携など、地図アプリ開発等を行うためのツールキットです。
 
 - Maps Toolkit で提供される機能
-    - Cesium for Unittyとの連携
+    - Cesium for Unityとの連携
         - PLATEAU SDKによりインポートした3D都市モデルにCesium for Unity上でのグローバル座標を与えます。
-        - PLATEAUがストリーミング提供する地形モデル (PLATEAU Terrain) を用いることで、高精度の地形モデルをCesium for unityで利用可能になります。
+        - PLATEAUがストリーミング提供する地形モデル (PLATEAU Terrain) を用いることで、高精度の地形モデルをCesium for Unityで利用可能になります。
     - BIMモデルとの連携（IFC ファイルの読み込み）
         - Revitなどで作られたIFCファイルをUnityシーン内に配置することができます。
         - IFCファイルに含まれる座標情報を用いてCesium for Unity上で自動的に配置することが可能です。
