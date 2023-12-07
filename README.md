@@ -115,7 +115,15 @@ Unityエディタが再起動します。
 
 ## Cesium for Unity のインストール
 
-PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能においてCesium for Unity が必要となるため、事前にインストールしていただく必要があります。下記のページでよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
+PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能においてCesium for Unity が必要となります。<br>
+Cesium for Unityをインストールしていなくても本Toolkitをご利用できますが、Cesium for Unityに依存する機能は以下のように表示され非Activeとなります。
+
+![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6)
+![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76)
+![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0)
+
+
+Cesium for Unityは下記のページよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
 
 - [Cesium for Unity v1.6.3](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.6.3)
 
