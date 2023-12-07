@@ -46,7 +46,11 @@ public class IfcFileLoader : IDisposable
         EditorUserSettings.SetConfigValue("PlateauToolkit.Maps.IfcOutputPath", m_OutputPath);
 
         string fullPath = Directory.GetCurrentDirectory().ToString().Replace("\\", "/") + "/Assets/IfcConvert";
+#if UNITY_EDITOR && UNITY_EDITOR_WIN
         m_IfcExePath = fullPath + "/IfcConvert.exe";
+#elif UNITY_EDITOR && !UNITY_EDITOR_WIN
+        m_IfcExePath = fullPath + "/IfcConvert";
+#endif
         EditorUserSettings.SetConfigValue("PlateauToolkit.Maps.IfcExePath", m_IfcExePath);
     }
 

@@ -13,6 +13,9 @@ using UnityEngine.Networking;
 using System.Net;
 using System.IO.Compression;
 using System.Linq;
+#if UNITY_EDITOR && !UNITY_EDITOR_WIN
+    using System.Diagnostics;
+#endif
 
 namespace PlateauToolkit.Maps.Editor
 {
@@ -442,7 +445,7 @@ namespace PlateauToolkit.Maps.Editor
                         if (!string.IsNullOrEmpty(selectedPath))
                         {
                             m_IfcFileLoader.SetOutputPath(selectedPath);
-                            Debug.Log("出力フォルダ " + selectedPath);
+                            UnityEngine.Debug.Log("出力フォルダ " + selectedPath);
                         }
                     }
                     EditorGUILayout.TextField("IFC アウトプットパス", m_IfcFileLoader.GetOutputPath());
@@ -577,19 +580,40 @@ namespace PlateauToolkit.Maps.Editor
         {
             if (!string.IsNullOrEmpty(path))
             {
-                Debug.Log("Download completed: " + path);
+                UnityEngine.Debug.Log("Download completed: " + path);
             }
             Unzip(path);
         }
 
+#if UNITY_EDITOR && !UNITY_EDITOR_WIN
+        public void ExtractZipFile(string zipFilePath, string extractPath)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = "/bin/bash",
+                Arguments = $"-c \"unzip -o \\\"{zipFilePath}\\\" -d \\\"{extractPath}\\\"\"",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (Process proc = new Process { StartInfo = startInfo })
+            {
+                proc.Start();
+                proc.WaitForExit();
+            }
+        }
+#endif
+
         public void Unzip(string zipFilePath)
         {
+            string extractPath = Path.GetDirectoryName(zipFilePath);
+
+#if UNITY_EDITOR && UNITY_EDITOR_WIN
             if (!File.Exists(zipFilePath))
             {
                 Debug.LogError("Zip file not found: " + zipFilePath);
                 return;
             }
-            string extractPath = Path.GetDirectoryName(zipFilePath);
             try
             {
                 ZipFile.ExtractToDirectory(zipFilePath, extractPath);
@@ -599,6 +623,10 @@ namespace PlateauToolkit.Maps.Editor
             {
                 Debug.LogError("Error unzipping file: " + e.Message);
             }
+#elif UNITY_EDITOR && !UNITY_EDITOR_WIN
+            ExtractZipFile(zipFilePath, extractPath);
+#endif
+            m_IfcFileLoader.SetPathsAutomatically();
         }
 
 #if CESIUM_FOR_UNITY
