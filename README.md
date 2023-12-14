@@ -215,6 +215,19 @@ Cesium3DTilesetの地形モデルにテクスチャが表示されるように�
 
 ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/8b7d10be-a80e-46d9-aefb-87cc127a578b)
 
+> **Note**
+> Lyayersの値を`plateau_photo`に設定すると地理院タイルとPLATEAU航空写真が統合されたラスターをオーバーレイすることができます。
+> 
+> 地理院タイルをウェブサイトやソフトウェア、アプリケーション上でリアルタイムに読み込んで利用する場合、出典の明示が必要となります。詳しくは「[地理院タイルのご利用について](https://maps.gsi.go.jp/development/ichiran.html)」をご参照ください。
+> 
+> ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/000c0636-6207-4a36-9443-c3c6f5ed4209)
+>
+> 表示結果
+>
+> ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/70fa946b-d034-4e96-88ac-90641258d98e)
+
+
+
 #### 参考：Cesium ionのラスターをオーバーレイに使用する
 ここではテクスチャ画像にCesiumから提供される航空画像テクスチャを使用しますが、この場合 Cesium Ion アカウントへ接続し、アクセストークンを取得する必要があります。 
 Cesiumから提供されるテクスチャが不要の場合はこの手順をスキップしてください。
