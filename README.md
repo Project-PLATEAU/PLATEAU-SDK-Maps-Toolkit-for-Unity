@@ -417,7 +417,7 @@ IFC読み込みツールでは読み込んだIFCモデルを選択し、以下�
 
 「ローカルディスクからIFCファイルを読み込み」を押下し、ファイル選択ウィンドウが表示されるので読み込むIFCファイルを選択します。
 
-[リリースページ](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/tag/v0.2.1)からIFCのサンプルファイルをダウンロードできます。以下の手順では[sample.ifc](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/download/v0.2.1/sample.ifc)を用いて説明します。
+[リリースページ](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/tag/v0.2.1)からIFCのサンプルファイルをダウンロードできます。以下の手順では[sample.ifc](../../releases/download/SampleFiles/sample_r2_2x3AC.ifc)を用いて説明します。
 
  PLATEAU都市モデルとBIMモデル（ここではIFCファイル）を活用するにあたって詳細は「[3D都市モデル整備のためのBIM活用マニュアル](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0003_ver03.pdf)」をご参照ください。
  
