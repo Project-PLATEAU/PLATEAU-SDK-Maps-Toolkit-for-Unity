@@ -209,6 +209,8 @@ Base URLに`http://13.114.145.224/mapproxy/service`を設定
 
 Layersに`plateau`を設定します。
 
+Maximum Levelは最大19まで設定可能です（拡大し詳細なテクスチャを表示させたい場合は19に設定）。
+
 ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/454c9ca1-066d-4d34-8759-a08caf030322)
 
 Cesium3DTilesetの地形モデルにテクスチャが表示されるようになります。
