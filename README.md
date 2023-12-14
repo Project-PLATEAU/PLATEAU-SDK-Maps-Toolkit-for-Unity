@@ -495,6 +495,7 @@ IFC属性情報に位置情報が保存されている場合、その情報を�
 
 <img width="600" alt="map_manual_41_ifcautoplace" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/76566af7-b88e-4739-8d78-896f5931c6a8">
 
+#### 配置結果
 
 <img width="600" alt="maps_toolkit_ifclocate_position_1" src="Documentation~/image/maps_toolkit_ifclocate_position_1.png">
 <img width="600" alt="maps_toolkit_ifclocate_position_2" src="Documentation~/image/maps_toolkit_ifclocate_position_2.png">
