@@ -197,13 +197,28 @@ Cesiumウィンドウの「Quick  Basic Assets」メニューの下にある 「
 ### 1-4. 地形モデルにラスターをオーバーレイする
 
 Cesium 3D Tilesetによって配置された地形モデルにテクスチャを付与するためにはCesium for UnityのRaster Overlay機能を利用します。  
-ここではテクスチャ画像にCesiumから提供される航空画像テクスチャを使用しますが、この場合 Cesium Ion アカウントへ接続し、アクセストークンを取得する必要があります。  
-テクスチャが不要の場合はこの手順をスキップしてください。
 
 > **Note**
-> [PLATEAU配信サービス（試験運用）](https://github.com/Project-PLATEAU/plateau-streaming-tutorial)ではPLATEAUが提供する航空写真データである[PLATEAU Ortho](https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/ortho/plateau-ortho-streaming.md)を提供していますが、**現時点でCesium for Unityに対応していません**。今後Cesium for Unity内でPLATEAU Orthoを利用可能とする実装を進める予定です。
+> [PLATEAU配信サービス（試験運用）](https://github.com/Project-PLATEAU/plateau-streaming-tutorial)ではPLATEAUが提供する航空写真データである[PLATEAU Ortho](https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/ortho/plateau-ortho-streaming.md)を提供しています。
 
-#### Cesium Ion アカウントへの接続
+「Cesium3DTileset」オブジェクトのインスペクタから「Add Componet」を押下し `Cesium Web Map Service Raster Overlay` コンポーネントを追加します。
+
+![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/1b4c8542-9a2c-4ab7-b86e-11ebce4c34c4)
+
+Base URLに`http://13.114.145.224/mapproxy/service`を設定
+
+Layersに`plateau`を設定します。
+
+![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/454c9ca1-066d-4d34-8759-a08caf030322)
+
+Cesium3DTilesetの地形モデルにテクスチャが表示されるようになります。
+
+![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/8b7d10be-a80e-46d9-aefb-87cc127a578b)
+
+#### 参考：Cesium ionのラスターをオーバーレイに使用する
+ここではテクスチャ画像にCesiumから提供される航空画像テクスチャを使用しますが、この場合 Cesium Ion アカウントへ接続し、アクセストークンを取得する必要があります。 
+Cesiumから提供されるテクスチャが不要の場合はこの手順をスキップしてください。
+##### Cesium Ion アカウントへの接続
 
 PLATEAUの地形モデルの利用のみでCesiumのその他のアセットやBing Mapsなどの外部アセットデータを利用しない場合は接続する必要はありません。
 
@@ -213,7 +228,7 @@ PLATEAUの地形モデルの利用のみでCesiumのその他のアセットやB
 
 ログイン画面が表示されるので、アカウント情報を入力してログインします。アカウントがない場合はCesium ionの[サインアップ](https://ion.cesium.com/signup/)をしてください。
 
-#### Cesium サインイン
+##### Cesium サインイン
 ユーザー名、パスワードを入力してサインインします。
 
 <img width="400" alt="map_manual_10_cesimion_login" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/95110b8e-eacb-4c0a-a613-2d1e00865d63">
@@ -226,7 +241,7 @@ PLATEAUの地形モデルの利用のみでCesiumのその他のアセットやB
 
 <img width="400" alt="map_manual_12_logined" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bcb9edc7-cafd-46cd-8275-d0d0df5c284d">
 
-#### ラスターオーバーレイ設定
+##### ラスターオーバーレイ設定
 
 「Cesium3DTileset」オブジェクトのインスペクタから「Add Componet」を押下し `Cesium Ion Raster Overlay` コンポーネントを追加します。
 
