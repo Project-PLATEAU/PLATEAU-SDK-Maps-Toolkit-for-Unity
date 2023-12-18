@@ -205,13 +205,14 @@ Cesium 3D Tilesetによって配置された地形モデルにテクスチャを
 
 ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/1b4c8542-9a2c-4ab7-b86e-11ebce4c34c4)
 
-Base URLに`http://13.114.145.224/mapproxy/service`を設定
+Base URLに`https://plateauortho.geospatial.jp/mapproxy/service`を設定
 
 Layersに`plateau`を設定します。
 
-Maximum Levelは最大19まで設定可能です（拡大し詳細なテクスチャを表示させたい場合は19に設定）。
+Maximum Levelは最大`19`まで設定可能です（拡大し詳細なテクスチャを表示させたい場合は19に設定）。
 
-![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/454c9ca1-066d-4d34-8759-a08caf030322)
+![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/4cfb77bf-5fde-4974-a395-1f7eba58f274)
+
 
 Cesium3DTilesetの地形モデルにテクスチャが表示されるようになります。
 
