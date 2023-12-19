@@ -138,7 +138,7 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 IFC読み込みなどの一部の機能は事前準備としてIFCコンバーターをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IFCコンバーターをインストールしてください。
 
 - [IfcOpenShellについて](https://ifcopenshell.org/)
-- [IfcOpenConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
+- [IfcConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
 - [ソースコードリポジトリ](https://blenderbim.org/docs-python/ifcconvert/installation.html)
 - [ライセンス(GNU Lesser General Public License v3.0)](https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.7.0/COPYING)
 
