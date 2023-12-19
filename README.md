@@ -37,6 +37,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
   * [PLATEAU SDK-Maps-Toolkit for Unity のインストール](#plateau-sdk-maps-toolkit-for-unity-のインストール)
   * [Cesium for Unity のインストール](#cesium-for-unity-のインストール)
   * [PLATEAU SDK for Unity を使って都市モデルをインポート](#plateau-sdk-for-unity-を使って都市モデルをインポート)
+  * [IfcConvertのインストール](#ifcconvertのインストール)
  
 - [利用手順](#利用手順)
   * [1. PLATEAUモデル位置合わせ](#1-plateauモデル位置合わせ)
@@ -134,7 +135,7 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 <img width="400" alt="top_manual_1_packagemanager" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bf577dca-0d2f-4959-948a-0e8d8dfa899d">
 
 
-## IfcOpenshell/IfcConvertのインストール
+## IfcConvertのインストール
 IFC読み込みなどの一部の機能は事前準備としてIFCコンバーターをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IFCコンバーターをインストールしてください。
 
 - [IfcOpenShellについて](https://ifcopenshell.org/)
