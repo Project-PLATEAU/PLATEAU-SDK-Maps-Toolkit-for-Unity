@@ -605,7 +605,7 @@ exe形式の実行ファイルはWindows向けなので、以降の手順では(
 
 Cesium for Unity上にGISデータ（シェープファイルもしくはGeoJSON）を配置します。
 
-[リリースページ](../../releases/tag/SampleFiles)からシェープファイルやGeoJSONファイルのサンプルをダウンロードできます。以下の手順では[SHP_Sample.zip](../../releases/download/SampleFiles/GeoJSON_Sample.zip)を用いて説明します。  
+[リリースページ](../../releases/tag/SampleFiles)からシェープファイルやGeoJSONファイルのサンプルをダウンロードできます。以下の手順では[SHP_Sample.zip](../../releases/download/SampleFiles/SHP_Sample.zip)を用いて説明します。  
 Maps ToolkitでGISデータを扱うためには、緯度経度（WGS84を推奨）が付されたデータが必要です。
 
 GISデータは緯度経度を用いるデータであり、GISデータの読み込みを行う際は緯度経度を用いたオブジェクトの配置を行うために `Cesium Georeference` の設定が必要です。位置合わせの手順を参考に `Cesium Georeference` オブジェクトをシーン内に作成してください。
