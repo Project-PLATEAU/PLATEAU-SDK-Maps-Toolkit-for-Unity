@@ -134,11 +134,9 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 <img width="400" alt="top_manual_1_packagemanager" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bf577dca-0d2f-4959-948a-0e8d8dfa899d">
 
 
-## Cesium for Unity のインストール
+## IfcOpenshell/IfcConvertのインストール
 IFC読み込みなどの一部の機能は事前準備としてIFCコンバーターをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IFCコンバーターをインストールしてください。
 
-
-### IfcOpenshell/IfcConvertのインストール
 - [IfcOpenShellについて](https://ifcopenshell.org/)
 - [IfcOpenConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
 - [ソースコードリポジトリ](https://blenderbim.org/docs-python/ifcconvert/installation.html)
