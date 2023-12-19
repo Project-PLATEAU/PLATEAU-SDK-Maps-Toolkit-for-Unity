@@ -138,13 +138,11 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 IFC読み込みなどの一部の機能は事前準備としてIFCコンバーターをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IFCコンバーターをインストールしてください。
 
 
-### 利用ライブラリ
+### IfcOpenshell/IfcConvertのインストール
 - [IfcOpenShellについて](https://ifcopenshell.org/)
-- [IfcOpenShellの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
+- [IfcOpenConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
 - [ソースコードリポジトリ](https://blenderbim.org/docs-python/ifcconvert/installation.html)
 - [ライセンス(GNU Lesser General Public License v3.0)](https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.7.0/COPYING)
-
-
 
 
 ## PLATEAU SDK for Unity を使って都市モデルをインポート
