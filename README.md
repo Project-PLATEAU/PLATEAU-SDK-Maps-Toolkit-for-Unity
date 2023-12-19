@@ -37,6 +37,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
   * [PLATEAU SDK-Maps-Toolkit for Unity のインストール](#plateau-sdk-maps-toolkit-for-unity-のインストール)
   * [Cesium for Unity のインストール](#cesium-for-unity-のインストール)
   * [PLATEAU SDK for Unity を使って都市モデルをインポート](#plateau-sdk-for-unity-を使って都市モデルをインポート)
+  * [IfcConvertのインストール](#ifcconvertのインストール)
  
 - [利用手順](#利用手順)
   * [1. PLATEAUモデル位置合わせ](#1-plateauモデル位置合わせ)
@@ -118,9 +119,9 @@ Unityエディタが再起動します。
 PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能においてCesium for Unity が必要となります。<br>
 Cesium for Unityをインストールしていなくても本Toolkitをご利用できますが、Cesium for Unityに依存する機能は以下のように表示され非Activeとなります。
 
-![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6)
-![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76)
-![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0)
+<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6">
+<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76">
+<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0">
 
 
 Cesium for Unityは下記のページよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
@@ -133,6 +134,16 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 
 <img width="400" alt="top_manual_1_packagemanager" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bf577dca-0d2f-4959-948a-0e8d8dfa899d">
 
+
+## IfcConvertのインストール
+IFC読み込みなどの一部の機能は事前準備としてIfcConvertをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IfcConvertをインストールしてください。
+
+<img width="400" alt="top_manual_1_packagemanager" src="Documentation~/image/maps_toolkit_dialog_ifcconvert.png">
+
+- [IfcOpenShellについて](https://ifcopenshell.org/)
+- [IfcConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
+- [ソースコードリポジトリ](https://github.com/IfcOpenShell/IfcOpenShell)
+- [ライセンス(GNU Lesser General Public License v3.0)](https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.7.0/COPYING)
 
 
 ## PLATEAU SDK for Unity を使って都市モデルをインポート
@@ -423,7 +434,6 @@ public class CesiumBoxExcluder : CesiumTileExcluder
 ## 2. IFCモデルの読み込み
 
 IFC読み込みツールでは読み込んだIFCモデルを選択し、以下のような操作を行うことが可能です。
-
 <img width="600" alt="map_manual_31_ifctop" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/3192600d-09d5-4a30-b9d2-32003b67990d">
 
 
@@ -448,7 +458,7 @@ IFC読み込みツールでは読み込んだIFCモデルを選択し、以下�
 
 「ローカルディスクからIFCファイルを読み込み」を押下し、ファイル選択ウィンドウが表示されるので読み込むIFCファイルを選択します。
 
-[リリースページ](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/tag/v0.2.1)からIFCのサンプルファイルをダウンロードできます。以下の手順では[sample.ifc](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/download/v0.2.1/sample.ifc)を用いて説明します。
+[リリースページ](../../releases/tag/SampleFiles)からIFCのサンプルファイルをダウンロードできます。以下の手順では[sample.ifc](../../releases/download/SampleFiles/sample_r2_2x3AC.ifc)を用いて説明します。
 
  PLATEAU都市モデルとBIMモデル（ここではIFCファイル）を活用するにあたって詳細は「[3D都市モデル整備のためのBIM活用マニュアル](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0003_ver03.pdf)」をご参照ください。
  
@@ -526,6 +536,12 @@ IFC属性情報に位置情報が保存されている場合、その情報を�
 
 <img width="600" alt="map_manual_41_ifcautoplace" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/76566af7-b88e-4739-8d78-896f5931c6a8">
 
+#### 配置結果
+
+<img width="600" alt="maps_toolkit_ifclocate_position_1" src="Documentation~/image/maps_toolkit_ifclocate_position_1.png">
+<img width="600" alt="maps_toolkit_ifclocate_position_2" src="Documentation~/image/maps_toolkit_ifclocate_position_2.png">
+
+
 
 ### 2-5. IFC読み込みの環境設定
 | 項目 | 説明 |
@@ -589,7 +605,7 @@ exe形式の実行ファイルはWindows向けなので、以降の手順では(
 
 Cesium for Unity上にGISデータ（シェープファイルもしくはGeoJSON）を配置します。
 
-[リリースページ](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/tag/v0.2.1)からシェープファイルやGeoJSONファイルのサンプルをダウンロードできます。以下の手順では[SHP_Sample.zip](https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/releases/download/v0.2.1/SHP_Sample.zip)を用いて説明します。  
+[リリースページ](../../releases/tag/SampleFiles)からシェープファイルやGeoJSONファイルのサンプルをダウンロードできます。以下の手順では[SHP_Sample.zip](../../releases/download/SampleFiles/SHP_Sample.zip)を用いて説明します。  
 Maps ToolkitでGISデータを扱うためには、緯度経度（WGS84を推奨）が付されたデータが必要です。
 
 GISデータは緯度経度を用いるデータであり、GISデータの読み込みを行う際は緯度経度を用いたオブジェクトの配置を行うために `Cesium Georeference` の設定が必要です。位置合わせの手順を参考に `Cesium Georeference` オブジェクトをシーン内に作成してください。
