@@ -119,9 +119,9 @@ Unityエディタが再起動します。
 PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能においてCesium for Unity が必要となります。<br>
 Cesium for Unityをインストールしていなくても本Toolkitをご利用できますが、Cesium for Unityに依存する機能は以下のように表示され非Activeとなります。
 
-![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6)
-![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76)
-![image](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0)
+<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6">
+<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76">
+<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0">
 
 
 Cesium for Unityは下記のページよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
@@ -136,7 +136,10 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 
 
 ## IfcConvertのインストール
-IFC読み込みなどの一部の機能は事前準備としてIFCコンバーターをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IFCコンバーターをインストールしてください。
+IFC読み込みなどの一部の機能は事前準備としてIfcConvertをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IfcConvertをインストールしてください。
+
+
+<img width="400" alt="top_manual_1_packagemanager" src="Documentation~/image/maps_toolkit_dialog_ifcconvert.png">
 
 - [IfcOpenShellについて](https://ifcopenshell.org/)
 - [IfcConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
