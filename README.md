@@ -143,7 +143,7 @@ IFC読み込みなどの一部の機能は事前準備としてIfcConvertをイ�
 
 - [IfcOpenShellについて](https://ifcopenshell.org/)
 - [IfcConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
-- [ソースコードリポジトリ](https://blenderbim.org/docs-python/ifcconvert/installation.html)
+- [ソースコードリポジトリ](https://github.com/IfcOpenShell)
 - [ライセンス(GNU Lesser General Public License v3.0)](https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.7.0/COPYING)
 
 
