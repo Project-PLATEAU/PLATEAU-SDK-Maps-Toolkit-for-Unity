@@ -1,7 +1,7 @@
 {
   "name": "com.unity.plateautoolkit.maps",
-  "displayName": "PLATEAU Toolkit Maps for Unity",
-  "version": "0.2.3-alpha1",
+  "displayName": "PLATEAU Maps Toolkit for Unity",
+  "version": "0.3.0-alpha1",
   "unity": "2021.3",
   "description": "Maps Toolkit for PLATEAU",
   "keywords": [
