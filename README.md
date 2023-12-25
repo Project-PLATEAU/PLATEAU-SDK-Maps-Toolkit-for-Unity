@@ -201,7 +201,10 @@ Raster Overlay機能はWMS（Web Map Service）形式で配信される画像デ
 
 > **Note**
 > [PLATEAU配信サービス（試験運用）](https://github.com/Project-PLATEAU/plateau-streaming-tutorial)ではPLATEAUが提供する航空写真データである[PLATEAU Ortho](https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/ortho/plateau-ortho-streaming.md)をxyzタイルで提供していますが、Cesium for UnityのRaster Overlay機能ではxyzタイルを表示することができません。  
-> そこで、本機能で空中写真を扱えるよう、PLATEAU Orthoと地理院タイルを統合したWMS形式データを用意しました。  
+> そこで、本機能で空中写真を扱えるよう、PLATEAU Orthoと地理院タイルを統合したWMS形式データを用意しました。
+>
+> WMS形式データには、PLATEAU Orthoのみの配信（Layers:plateau）とPLATEAU Orthoと地理院タイルを統合したデータ（Layers:plateau_photo）の2種類が利用可能です。
+>
 > 配信URLは以下になります。自由にご利用ください。  
 > https://plateauortho.geospatial.jp/mapproxy/service
 
@@ -226,6 +229,8 @@ Cesium3DTilesetの地形モデルにテクスチャが表示されるように�
 ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/8b7d10be-a80e-46d9-aefb-87cc127a578b)
 
 > **Note**
+> WMS形式データには、PLATEAU Orthoのみの配信（Layers:plateau）とPLATEAU Orthoと地理院タイルを統合したデータ（Layers:plateau_photo）の2種類が利用可能です。
+>
 > Lyayersの値を`plateau_photo`に変更すると地理院タイルとPLATEAU航空写真が統合されたラスターをオーバーレイすることができます。
 >
 > Base URLには引き続きPLATEAU Ortho WMSの配信URLを設定します。`https://plateauortho.geospatial.jp/mapproxy/service`
@@ -233,7 +238,6 @@ Cesium3DTilesetの地形モデルにテクスチャが表示されるように�
 > PLATEAU Ortho WMSはPLATEAUが独自に取得した空中写真と地理院タイルを統合した全国の空中写真です。 ウェブサイトやソフトウェア、アプリケーション上でリアルタイムに読み込んで利用する場合、出典の明示が必要となります。詳しくは「[地理院タイルのご利用について](https://maps.gsi.go.jp/development/ichiran.html)」をご参照ください。
 > 
 > <img width="557" alt="image" src="https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/83be4eb9-a10f-45d6-b047-434f91020af1">
-
 >
 > 表示結果
 >
