@@ -21,7 +21,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 | 更新日時 | 変更内容 |
 | :--- | :--- |
-|  2023/12/13  |  Maps Toolkitを専用パッケージに分割 |
+|  2023/12/25  |  Maps Toolkitを専用パッケージに分割 |
 |  2023/10/28  |  Maps Toolkit初回リリース |
 
 # 目次
@@ -88,7 +88,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 新しく Unity バージョン 2021.3.30 の Unity プロジェクトを作成してください。
 その際のテンプレートとして「3D (URP)」もしくは「3D (HDRP)」を選択してください。
 
-<img width="493" alt="スクリーンショット 2023-07-12 19 18 33" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b45abddf-fe60-4dbd-9127-910fcb916ed4">
+<img width="493" alt="maps_select_urp_hdrp" src="Documentation~/image/maps_select_urp_hdrp.png">
 
 ## PLATEAU SDK-Maps-Toolkit for Unity のインストール
 
@@ -96,11 +96,11 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 2. 「Package Manager」ウィンドウの右上にある「＋」ボタンをクリックし、「Add package from tarball...」を選択します。
 3. ファイル選択ダイアログが開いたら、PLATEAU SDK-Maps-Toolkit for Unityパッケージの tarball (.tgzファイル) を選択します。
 
-<img width="493" alt="スクリーンショット 2023-07-12 19 18 42" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b9076829-b7cb-45db-a5a1-5ce6dbc435b1">
+<img width="493" alt="maps_tgz_install" src="Documentation~/image/maps_tgz_install.png">
 
 新規作成したUnityプロジェクトに PLATEAU SDK-Maps-Toolkit for Unity をインストールすると、インストールされている他のパッケージに依存して入力システムについての確認ダイアログが表示される場合があります。その場合は「Yes」を選択してください（Unityエディタが再起動します）。
 
-<img width="500" alt="InputDialog" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/120234a9-1457-46f5-9a71-0c43febd44a2">
+<img width="500" alt="maps_install_dialog" src="Documentation~/image/maps_install_dialog.png">
 
 [ダウンロードリンクはこちら](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/releases)
 
@@ -108,9 +108,9 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能の利用には Cesium for Unity が必要です。Cesium for Unityがインストールされていない場合でもその他の機能は利用できますが、Cesium for Unityに依存する機能は以下のように表示され使用不可となります。
 
-<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6">
-<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76">
-<img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0">
+<img width="600" alt="maps_dependencies_1" src="Documentation~/image/maps_dependencies_1.png">
+<img width="600" alt="maps_dependencies_2" src="Documentation~/image/maps_dependencies_2.png">
+<img width="600" alt="maps_dependencies_3" src="Documentation~/image/maps_dependencies_3.png">
 
 Cesium for Unityは下記のページよりダウンロードしてください。PLATEAU SDK-Maps-Toolkitではバージョンv1.6.3をサポートしています。
 
@@ -120,13 +120,13 @@ Cesium for Unityは下記のページよりダウンロードしてください�
 
 Windows > PackageManagerの「Add package from tarball…」を選択し、ダウンロードした Cesium for Unity の tgz ファイルを選択します。
 
-<img width="400" alt="top_manual_1_packagemanager" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bf577dca-0d2f-4959-948a-0e8d8dfa899d">
+<img width="400" alt="maps_packagemanager_tgz" src="Documentation~/image/maps_packagemanager_tgz.png">
 
 
 ## IfcConvertのインストール
 IFC読み込みなどの一部の機能の利用にはIfcConvertをインストールする必要があります。該当の機能の使用時に表示されるメッセージに従い、IfcConvertをインストールしてください。
 
-<img width="400" alt="top_manual_1_packagemanager" src="Documentation~/image/maps_toolkit_dialog_ifcconvert.png">
+<img width="400" alt="maps_toolkit_dialog_ifcconvert" src="Documentation~/image/maps_toolkit_dialog_ifcconvert.png">
 
 - [IfcOpenShellについて](https://ifcopenshell.org/)
 - [IfcConvertの利用方法](https://blenderbim.org/docs-python/ifcconvert/installation.html)
@@ -144,9 +144,9 @@ PLATEAU SDK for Unityをインストールしていていない場合は、[マ�
 
 上部のメニューより PLATEAU > PLATEAU Toolkit > Maps Toolkit を選択し、Maps Toolkit ウィンドウを開いて、それぞれの機能を利用することができます。
 
-<img width="600" alt="map_manual_1_menu" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/88a05650-4f42-48ca-bd09-74ca3effff78">
+<img width="600" alt="maps_ui_select_maps" src="Documentation~/image/maps_ui_select_maps.png">
 
-<img width="600" alt="map_manual_2_toolkittop" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/db61db90-c7db-4df0-beaa-2bc7de17d629">
+<img width="600" alt="maps_ui_main" src="Documentation~/image/maps_ui_main.png">
 
 
 ## 1. PLATEAUモデル位置合わせ
@@ -162,13 +162,13 @@ Unityエディターのメニューから Cesium > Cesium を選択し、Cesium 
 Cesiumウィンドウの「Quick  Basic Assets」メニューの下にある 「Blank 3D Tiles Tileset」をクリックし、シーン上に3D地形モデルオブジェクトを作成します。
 
 
-<img width="600" alt="map_manual_3_cesium" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/c6550211-6a87-4521-8a85-56024fb0519f">
+<img width="600" alt="maps_blank_3dtiles" src="Documentation~/image/maps_blank_3dtiles.png">
 
 
 シーンに「CesiumGeoreference」という名前のゲームオブジェクトが作成されていることを確認してください。また、ヒエラルキーで「Cesium3DTileset」というオブジェクトがCesiumGeoreference の子オブジェクトとして作成されており、このオブジェクトの `Cesium 3D Tileset` というコンポーネントに地形モデルの設定を行います。
 
 
-<img width="600" alt="map_manual_4_3dtileset" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/5b5282d2-9e4e-4690-968f-5a6fa316c413">
+<img width="600" alt="maps_blank_3dtiles_h" src="Documentation~/image/maps_blank_3dtiles_h.png">
 
 
 ### 1-3. 地形モデルにPLATEAU Terrainを利用する
@@ -181,14 +181,14 @@ Cesiumウィンドウの「Quick  Basic Assets」メニューの下にある 「
 ここでは、[PLATEAU配信サービス（試験運用）](https://github.com/Project-PLATEAU/plateau-streaming-tutorial)が提供する地形モデル（PLATEAU Terrain）を利用することができます。
 チュートリアルの「**[2.1. アクセストークン及びアセットID](https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/terrain/plateau-terrain-streaming.md#21-%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E5%8F%8A%E3%81%B3%E3%82%A2%E3%82%BB%E3%83%83%E3%83%88id)**」に記載されている値を入力します。
 
-<img width="600" alt="map_manual_6_cesiumtileset" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/85f435f7-2828-4779-bea6-f7fbf27583e3">
+<img width="600" alt="maps_cesium_tileset" src="Documentation~/image/maps_cesium_tileset.png">
 
-<img width="600" alt="map_manual_7_terrain_notexture" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/2f637b61-3ac5-446f-aeba-104c4da13b7d">
+<img width="600" alt="maps_terrain_notexture" src="Documentation~/image/maps_terrain_notexture.png">
 
 
 正しく設定されていれば、シーンにPLATEAUの地形モデルが描画されます（表示されない場合は `Cesium 3D Tileset` コンポーネントの上部にある「Refresh Tileset」ボタンを押してください）。この時点ではテクスチャを設定していないため、単色のメッシュのみが表示されています。
 
-<img width="600" alt="map_manual_8_showtilesHierarchy" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/56350d69-d688-416e-8113-fa8c2c02a956">
+<img width="600" alt="maps_showtiles_in_hierarchy" src="Documentation~/image/maps_showtiles_in_hierarchy.png">
 
 なお、ヒエラルキーではメッシュのゲームオブジェクトは非表示なっていますが、 `Cesium 3D Tileset` の `Show Tiles in Hierarchy` を有効にすることで表示させることができます。メッシュオブジェクトは `Cesium 3D Tileset` コンポーネントがアタッチされているゲームオブジェクトの子オブジェクトとして生成されています。
 
@@ -209,7 +209,7 @@ Raster Overlay機能はWMS（Web Map Service）形式で配信される画像デ
 
 「Cesium3DTileset」オブジェクトのインスペクタから「Add Componet」を押下し `Cesium Web Map Service Raster Overlay` コンポーネントを追加します。
 
-![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/1b4c8542-9a2c-4ab7-b86e-11ebce4c34c4)
+<img width="400" alt="maps_wms_raster_overlay" src="Documentation~/image/maps_wms_raster_overlay.png">
 
 Base URLにWMS配信URLを設定します。
 
@@ -220,12 +220,11 @@ Layersに`plateau`を設定します。
 
 Maximum Levelは最大`19`まで設定可能です（拡大し詳細なテクスチャを表示させたい場合は19に設定）。
 
-![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/4cfb77bf-5fde-4974-a395-1f7eba58f274)
-
+<img width="600" alt="maps_wms_raster_overlay_settings" src="Documentation~/image/maps_wms_raster_overlay_settings.png">
 
 Cesium3DTilesetの地形モデルにテクスチャが表示されるようになります。
 
-![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/8b7d10be-a80e-46d9-aefb-87cc127a578b)
+<img width="800" alt="maps_wms_raster_overlay_display" src="Documentation~/image/maps_wms_raster_overlay_display.png">
 
 > **Note**
 > WMS形式データには、PLATEAU Orthoのみの配信（Layers:plateau）とPLATEAU Orthoと地理院タイルを統合したデータ（Layers:plateau_photo）の2種類が利用可能です。
@@ -236,11 +235,11 @@ Cesium3DTilesetの地形モデルにテクスチャが表示されるように�
 > 
 > PLATEAU Ortho WMSはPLATEAUが独自に取得した空中写真と地理院タイルを統合した全国の空中写真です。 ウェブサイトやソフトウェア、アプリケーション上でリアルタイムに読み込んで利用する場合、出典の明示が必要となります。詳しくは「[地理院タイルのご利用について](https://maps.gsi.go.jp/development/ichiran.html)」をご参照ください。
 > 
-> <img width="557" alt="image" src="https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/83be4eb9-a10f-45d6-b047-434f91020af1">
+> <img width="557" alt="maps_wms_plateau_photo" src="Documentation~/image/maps_wms_plateau_photo.png">
 >
-> 表示結果
+> 表示結果 <br>
 >
-> ![image](https://github.com/PLATEAU-Toolkits-Internal/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/113009946/70fa946b-d034-4e96-88ac-90641258d98e)
+> <img width="750" alt="maps_wms_plateau_photo_display" src="Documentation~/image/maps_wms_plateau_photo_display.png">
 
 
 
@@ -253,47 +252,47 @@ PLATEAUの地形モデルの利用のみでCesiumのその他のアセットやB
 
 ログインするためにはCesiumウィンドウから「Connect to Cesium ion」を押下し、表示されるURLをコピーしてブラウザで開きます。
 
-<img width="400" alt="map_manual_9_cesiumtop" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/0993d253-dde2-42eb-b6b5-42fadb431c6c">
+<img width="400" alt="maps_connect_to_cesium" src="Documentation~/image/maps_connect_to_cesium.png">
 
 ログイン画面が表示されるので、アカウント情報を入力してログインします。アカウントがない場合はCesium ionの[サインアップ](https://ion.cesium.com/signup/)をしてください。
 
 ##### Cesium サインイン
 ユーザー名、パスワードを入力してサインインします。
 
-<img width="400" alt="map_manual_10_cesimion_login" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/95110b8e-eacb-4c0a-a613-2d1e00865d63">
+<img width="400" alt="maps_cesimion_login" src="Documentation~/image/maps_cesimion_login.png">
 
 ログインに成功すると、次のような画面が表示されるので「Allow」を押下します。
 
-<img width="400" alt="map_manual_11_cesiumion_permission" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/690c68c1-f5fb-475d-90d6-6351b45c92fd">
+<img width="400" alt="maps_cesiumion_permission" src="Documentation~/image/maps_cesiumion_permission.png">
 
 正しくログインが完了すると、Cesiumウィンドウに Cesium ion Assets を用いた機能など、Cesiumへのログインが必要な機能が利用可能になります。
 
-<img width="400" alt="map_manual_12_logined" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/bcb9edc7-cafd-46cd-8275-d0d0df5c284d">
+<img width="400" alt="maps_login_success" src="Documentation~/image/maps_login_success.png">
 
 ##### ラスターオーバーレイ設定
 
 「Cesium3DTileset」オブジェクトのインスペクタから「Add Componet」を押下し `Cesium Ion Raster Overlay` コンポーネントを追加します。
 
-<img width="400" alt="map_manual_13_cesimraster" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/6378cd89-ca68-4ca8-8f9a-b8e84d37259a">
+<img width="400" alt="maps_raster_overlay" src="Documentation~/image/maps_raster_overlay.png">
 
 
 追加した `Cesium Ion Raster Overlay` コンポーネントの `ion Asset ID` を 2 に変更します。
 
-<img width="400" alt="map_manual_14_ionassetid" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/75e1d805-e534-45da-acc3-54f8fbd43547">
+<img width="400" alt="maps_ionassetid" src="Documentation~/image/maps_ionassetid.png">
 
 
 この状態で、決定しようとすると、下記のようなダイアログが表示され、access tokenが求められます。「Select or create a new project default token」を選択してください。
 
-<img width="400" alt="map_manual_15_troubleshooting" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/08b1a1f9-553a-4b2d-84fb-5146c12428ac">
+<img width="400" alt="maps_token_troubleshooting" src="Documentation~/image/maps_token_troubleshooting.png">
 
 「Select Cesium ion Token」ダイアログが開くので、「Use an existing token」にチェックを入れ、プルダウンの「Default Token」を選択します。入力したら「Use as Project Default Token」ボタンを押下します。
 
-<img width="400" alt="map_manual_16_cesium_selecttoken" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/a6b4b367-c88a-4012-a99b-817f0b181eb6">
+<img width="400" alt="maps_cesium_selecttoken" src="Documentation~/image/maps_cesium_selecttoken.png">
 
 
 Cesium3DTilesetの地形モデルにテクスチャが表示されるようになります。
 
-<img width="600" alt="map_manual_17_terrain_textured" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/d85b62a0-7561-40b1-8ded-8016e57c4a1d">
+<img width="600" alt="maps_terrain_textured" src="Documentation~/image/maps_terrain_textured.png">
 
 
 ### 1-5. Cesium for Unity上への3D都市モデルの配置
@@ -304,32 +303,31 @@ PLATEAU SDKを用いて配置された3D都市モデルにCesium for Unity上で
 
 ヒエラルキー上でインポートしてある3D都市モデルを `CesiumGeoreference` の子オブジェクトとして配置します（左図が配置変更前、右図が配置変更後になります）。
 
-<img width="300" alt="map_manual_18_hierarchy_before" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/4527b649-2083-4f63-94ec-f13fca0f77d3">
-<img width="300" alt="map_manual_19_hierarchy_after" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/66a28f2f-d27c-4e0a-9732-520e3eb04926">
+<img width="300" alt="maps_cesiumgeoreference_hierarchy_before" src="Documentation~/image/maps_cesiumgeoreference_hierarchy_before.png"> <img width="300" alt="maps_cesiumgeoreference_hierarchy_after" src="Documentation~/image/maps_cesiumgeoreference_hierarchy_after.png">
 
 3D都市モデルオブジェクトのインスペクタ上で「Add Component」を押下し、 `Cesium Globe Anchor` を選択してアタッチします。これで3D都市モデルを位置合わせするための準備は完了です。
 
-<img width="600" alt="map_manual_20_addcomponent" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/67eacc17-cad9-46a1-b8e3-dbf991b8b080">
-<img width="600" alt="map_manual_21_globeanchor" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/f6da7258-4da8-4862-bfeb-a634b24f6b31">
+<img width="600" alt="maps_addcomponent" src="Documentation~/image/maps_addcomponent.png">
+<img width="600" alt="maps_globeanchor" src="Documentation~/image/maps_globeanchor.png">
 
 #### 位置合わせを実行する
 
 Maps Toolkit ウィンドウの `PLATEAUモデル` フィールドにシーン上の3D都市モデルオブジェクトを設定します（ヒエラルキーからドラッグアンドドロップして設定できます）。
 
-<img width="1000" alt="map_manual_22_setplateaumodel" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/0dc9fc2d-77f9-4250-a9f5-b6a9657c0629">
+<img width="1000" alt="maps_align_plateaumodel" src="Documentation~/image/maps_align_plateaumodel.png">
 
 
 「PLATEAUモデルの位置を合わせる」を押すと選択した3D都市モデルオブジェクトがCesiumの地形モデル上で正しい位置に配置されます。
 
 (例) 上記の設定で東京タワー周辺のPLATEAU建築物モデルの位置合わせの実行結果
-<img width="1000" alt="map_manual_23_modelfitting" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/15b2a0b0-89b6-4449-9596-5a84a6ded6ea">
+<img width="1000" alt="maps_alignment_result" src="Documentation~/image/maps_alignment_result.gif">
 
 > **Note**
 **位置合わせ**を実行すると`PLATEAU Instanced City Model`オブジェクトの緯度経度高さが`Cesium Georeference` ゲームオブジェクトのコンポーネントの `Origin (Longitude Latitude Height)`の値へ自動的に入力されます。
 
-<img width="400" alt="map_manual_24_citymodel_lonlat" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/c8224783-3da1-4c7a-99fb-a758879b4b48">
+<img width="400" alt="maps_citymodel_lonlat" src="Documentation~/image/maps_citymodel_lonlat.png">
 
-<img width="400" alt="map_manual_25_cesiumgeo_lonlat" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/50b856a6-5d19-47e1-a6a2-cdd9e3442d89">
+<img width="400" alt="maps_cesiumgeo_lonlat" src="Documentation~/image/maps_cesiumgeo_lonlat.png">
 
 
 > **Warning**
@@ -343,7 +341,7 @@ PLATEAU SDK によって特定の範囲の3D都市モデルをインポートす
 
 Cesium ウィンドウから再度「Blank 3D Tiles Tileset」を押下し、新しい `Cesium 3D Tileset` オブジェクトを作成します。このとき、既にシーン内に `Cesium Georeference` オブジェクトが存在する場合はそのオブジェクトの子オブジェクトとして作成されます。
 
-<img width="400" alt="map_manual_26_blank3dtileasset" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/5bd144aa-290f-487e-a8ef-9986184c6d06">
+<img width="400" alt="maps_blank3dtileasset" src="Documentation~/image/maps_blank3dtileasset.png">
 
 
 #### ストリーミングURLを設定
@@ -357,21 +355,21 @@ plateau-3D Tiles-streaming
 
 - https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/3d-tiles/plateau-3dtiles-streaming.md
 
-<img width="400" alt="map_manual_27_plateau-3D Tiles-streaming" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/9d12418f-a1a6-4e73-80f4-0092d56ea3e3">
+<img width="400" alt="maps_plateau_3Dtiles_streaming" src="Documentation~/image/maps_plateau_3Dtiles_streaming.png">
 
 
 なお、複数の地域をまたがる場所の開発を行う場合は、これまでの手順を参考に `Cesium 3D Tileset` オブジェクトを作成し、それぞれURLを設定してください。
 
 ストリーミング3D都市モデルを追加することで、下図のように青いアウトラインのあるインポートされた3D都市モデルの周囲の建物を表示することができます。
 
-<img width="600" alt="map_manual_28_blueoutline" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/6d57edf4-8e7f-43fc-8b8a-01c0183ba038">
+<img width="600" alt="maps_blueoutline" src="Documentation~/image/maps_blueoutline.png">
 
 
 **ストリーミングされる3D都市モデルの範囲設定**
 
 ここまでの手順で周囲の3D都市モデルを表示することができますが、インポートした部分の3D都市モデルも重複して表示されています。
 
-<img width="600" alt="[map_manual_29_imported" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/05475ce7-066e-4f5c-a9d6-ba8b40d0af42">
+<img width="600" alt="maps_imported" src="Documentation~/image/maps_imported.png">
 
 Cesium では特定の領域の建物の表示を制限する仕組みが用意されているため、ここではその仕組を用いてインポートされた3D都市モデルがストリーミングされる3D都市モデルと重複しないような設定を行います。
 
@@ -430,13 +428,13 @@ public class CesiumBoxExcluder : CesiumTileExcluder
 
  `CesiumBoxExcluder` の `Invert` をオンにすると `Box Collider` の外側の3D Tilesのみが表示され、オフにすると内側のみが表示されます。
 
-<img width="600" alt="map_manual_30_box" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b378183c-d973-44fe-8a18-5bfb0f926938">
+<img width="600" alt="maps_box_collider" src="Documentation~/image/maps_box_collider.png">
 
 
 ## 2. IFCモデルの読み込み
 
 IFC読み込みツールでは読み込んだIFCモデルを選択し、以下のような操作を行うことが可能です。
-<img width="600" alt="map_manual_31_ifctop" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/3192600d-09d5-4a30-b9d2-32003b67990d">
+<img width="600" alt="maps_ifctop" src="Documentation~/image/maps_ifctop.png">
 
 
 | 項目 | 説明 |
@@ -464,21 +462,21 @@ IFC読み込みツールでは読み込んだIFCモデルを選択し、以下�
 
  PLATEAU都市モデルとBIMモデル（ここではIFCファイル）を活用するにあたって詳細は「[3D都市モデル整備のためのBIM活用マニュアル](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0003_ver03.pdf)」をご参照ください。
  
-<img width="600" alt="map_manual_32_ifcload" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/e83c1758-533a-4f8f-ad82-9dbd5c41b8f2">
+<img width="600" alt="maps_ifcload" src="Documentation~/image/maps_ifcload.png">
 
 コンソール画面が開き、読み込みと変換処理が開始されます。（時間がかかる場合があります。）
 
-<img width="400" alt="map_manual_33_terminal" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/644738b1-960e-4e11-9ea8-5b5ac0294616">
+<img width="400" alt="maps_terminal" src="Documentation~/image/maps_terminal.png">
 
 
 完了するとプロジェクト内のAssets/MeshesフォルダにGLBファイルとXMLファイルが保存されます。
 
-<img width="400" alt="map_manual_34_asettsmeshes" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/44e58269-2a0d-4379-851b-aa50f37b892c">
+<img width="400" alt="maps_asettsmeshes" src="Documentation~/image/maps_asettsmeshes.png">
 
 
 インポートしたGLBファイルは、シーンにドラッグドロップして配置することができます。
 
-<img width="400" alt="map_manual_35_dragdrop" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/4e41cf85-710a-4beb-86a1-c29e47d2f185">
+<img width="400" alt="maps_dragdrop" src="Documentation~/image/maps_dragdrop.png">
 
 
 
@@ -488,17 +486,17 @@ IFC読み込みツールでは読み込んだIFCモデルを選択し、以下�
 
 「属性情報を付与」機能ではUnityエディタ内でGLBファイル（3Dモデル）とXMLファイル（属性情報）の関連付けを行いいます。
 
-<img width="600" alt="map_manual_36_attribution" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/c27951db-d7a2-4612-a30b-11e9358070ab">
+<img width="600" alt="maps_attribution" src="Documentation~/image/maps_attribution.png">
 
 
 IFCモデルの項目には、ヒエラルキーからGLBのゲームオブジェクトをドラック＆ドロップして設定します。
 
-<img width="600" alt="map_manual_37_drop" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/d5c014a5-446a-49b8-9d09-b7e86f383d7f">
+<img width="600" alt="maps_glb_drop" src="Documentation~/image/maps_glb_drop.png">
 
 
 IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイルをドラック＆ドロップして設定します。
 
-<img width="400" alt="map_manual_38_" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/4bbdd87e-651e-40a3-8ed0-c25d1ebee7cd">
+<img width="400" alt="maps_xml_drop" src="Documentation~/image/maps_xml_dropt.png">
 
 
 最後に「属性情報を付与」ボタンをクリックするとIFCファイルの属性情報をUnity上のIFCモデルに関連付けされ、位置情報などの属性情報をUnity上で利用することができます。
@@ -507,7 +505,7 @@ IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイル�
 
 ヒエラルキーにて、GLBオブジェクト（IFCを読み込んだ結果）を`Cesium Georeference`の子オブジェクトに設定します。
 
-<img width="600" alt="map_manual_39_glbundergeo" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/08b46041-c04e-4a7b-bd8d-7d55c25f1c41">
+<img width="600" alt="maps_glbundergeo" src="Documentation~/image/maps_glbundergeo.png">
 
 さらにGLBオブジェクトのインスペクタ上で「Add Component」を押下し、 `Cesium Globe Anchor` を選択してアタッチします。これで自動配置するための準備は完了です。
 
@@ -516,7 +514,7 @@ IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイル�
 
 読み込んだIFCモデルを指定された緯度、経度、標高に配置します。また回転角度、縮尺を設定することができます。
 
-<img width="600" alt="map_manual_40_ifc_posture" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/97fac068-7f74-4047-866a-3ded6c248e66">
+<img width="600" alt="maps_ifc_posture" src="Documentation~/image/maps_ifc_posture.png">
 
 
 ### 2-4. IFC属性情報から自動配置
@@ -527,16 +525,16 @@ IFC属性情報に位置情報が保存されている場合、その情報を�
 
 ヒエラルキーにて、GLBオブジェクト（IFCを読み込んだ結果）を`Cesium Georeference`の子オブジェクトに設定します。
 
-<img width="600" alt="map_manual_39_glbundergeo" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/08b46041-c04e-4a7b-bd8d-7d55c25f1c41">
+<img width="600" alt="maps_glbundergeo" src="Documentation~/image/maps_glbundergeo.png">
 
 さらにGLBオブジェクトのインスペクタ上で「Add Component」を押下し、 `Cesium Globe Anchor` を選択してアタッチします。これで自動配置するための準備は完了です。
 
-<img width="400" alt="mapsnew" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/52cd0f6f-eb88-44aa-be51-3e554133de5f">
+<img width="400" alt="maps_cga_attach" src="Documentation~/image/maps_cga_attach.png">
 
 
 「IFC属性情報から自動配置」ボタンを押すとモデルが配置されます。
 
-<img width="600" alt="map_manual_41_ifcautoplace" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/76566af7-b88e-4739-8d78-896f5931c6a8">
+<img width="600" alt="maps_ifcautoplace" src="Documentation~/image/maps_ifcautoplace.png">
 
 #### 配置結果
 
@@ -551,7 +549,7 @@ IFC属性情報に位置情報が保存されている場合、その情報を�
 | IFC ローダーパス | IFCローダー (IfcConvert) はWindowsでは基本的に変更する必要はないですが、 macOS では選択する必要があります（後述）。 |
 | IFC アウトプットパス | 生成されるファイルの出力先フォルダは、デフォルトではUnityプロジェクト内の Assets/Meshes に設定されていますが、 IFC アウトプットパス を設定することで別のフォルダを指定することができます。 |
 
-<img width="600" alt="map_manual_42_ifcloaderpath" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/01f8a681-afa4-445a-8077-a6df8db5d54a">
+<img width="600" alt="maps_ifcloaderpath" src="Documentation~/image/maps_ifcloaderpath.png">
 
 
 #### macOSについて
@@ -568,7 +566,7 @@ PLATEAU SDK Toolkits for Unity をインストールしたあとmacOSでは以�
 
 `{インストールしたUnityプロジェクトのフォルダパス}/Library/PackageCache/com.unity.plateautoolkit@{ハッシュ}/PlateauToolkit.Maps/Editor/IfcConvert/`
 
-<img width="400" alt="map_manual_43_macexplorer" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/42bdf792-afe1-4765-b226-b63e6eeca007">
+<img width="400" alt="maps_macexplorer" src="Documentation~/image/maps_macexplorer.png">
 
 
 > **Warning**
@@ -589,7 +587,7 @@ exe形式の実行ファイルはWindows向けなので、以降の手順では(
 
 “Permission Denied” が表示されていれば環境設定のセキュリティ画面を開きます。
 
-<img width="600" alt="map_manual_44_macospermission" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/37ec1f3d-0430-4a7b-80a4-f7519690e74b">
+<img width="600" alt="maps_macospermission" src="Documentation~/image/maps_macospermission.png">
 
 
 上記の図のように、IfcConvert はブロックされましたというメッセージを見つけて「許可」を押下してください。その後、再度「ターミナルアプリ」から上記コマンドを実行してGLBファイルが生成されることを確認し、正しくIfcConvertの実行されることを確認してください。
@@ -598,7 +596,7 @@ exe形式の実行ファイルはWindows向けなので、以降の手順では(
 
 デフォルトでは Windows の実行ファイルのパスが設定されていますが、macOSでは Maps Toolkit ウィンドウから環境設定を開き、上記の実行ファイルのパスを `IFC ローダーパス` に設定してください。
 
-<img width="600" alt="map_manual_45_ifcloaderpath" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/f652beb1-2b6e-474a-9a23-b9eb9863e45b">
+<img width="600" alt="maps_ifcloaderpath_win" src="Documentation~/image/maps_ifcloaderpath_win.png">
 
 
 設定が完了したら Windowsと同様の手順でMaps ToolkitによるIFCの読み込みができます。
@@ -620,14 +618,14 @@ GISデータは緯度経度を用いるデータであり、GISデータの読�
 | SHPのレンダー方法 | GISデータはメッシュあるいは線として描画することができます。GeoJSONの場合は自動で決定されます（ファイル内のプロパティから自動判断されます）。 |
 | GISの線幅 | 描画する先の太さを指定します。SHPのレンダー方法がLineのときのみ表示されます。|
 
-<img width="600" alt="map_manual_46_shppng" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/a3bb42e0-9586-46d3-8e1f-ddabe8638db9">
+<img width="600" alt="maps_shpline" src="Documentation~/image/maps_shpline.png">
 
-<img width="600" alt="map_manual_47_shpmesh" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/223001e4-43da-453e-806e-486aa607a03e">
+<img width="600" alt="maps_shpmesh" src="Documentation~/image/maps_shpmesh.png">
 
 
 ファイルを指定した後に「GISデータの読み込み」を押すと、でGISオブジェクトが描画されます。
 
-<img width="600" alt="map_manual_48_shprever" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/0f56d730-f980-4ae6-a230-9feacdd69f1f">
+<img width="600" alt="maps_shprender" src="Documentation~/image/maps_shprender.png">
 
 
 > **Note**
