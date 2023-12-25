@@ -19,56 +19,61 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
      
 ### 更新履歴
 
-|  2023/12/13  |  Maps Toolkitを専用パッケージに分割|
+| 更新日時 | 変更内容 |
 | :--- | :--- |
-|  2023/10/28  |  Maps Toolkit初回リリース|
+|  2023/12/13  |  Maps Toolkitを専用パッケージに分割 |
+|  2023/10/28  |  Maps Toolkit初回リリース |
 
-
-
-     
 # 目次
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=3 orderedList=false} -->
+<!-- code_chunk_output -->
 
-
+- [PLATEAU SDK-Maps-Toolkit for Unity 利用マニュアル](#plateau-sdk-maps-toolkit-for-unity-利用マニュアル)
+    - [更新履歴](#更新履歴)
+- [目次](#目次)
 - [セットアップ環境](#セットアップ環境)
-  *  [検証済環境](#検証済環境)
+  - [検証済環境](#検証済環境)
+    - [推奨OS環境](#推奨os環境)
+    - [Unity バージョン](#unity-バージョン)
+    - [レンダリングパイプライン](#レンダリングパイプライン)
+  - [PLATEAU SDKバージョン](#plateau-sdkバージョン)
 - [導入手順](#導入手順)
-  * [Unityでのプロジェクト作成](#unityでのプロジェクト作成)
-  * [PLATEAU SDK for Unityのインストール](#plateau-sdk-for-unityのインストール)
-  * [PLATEAU SDK-Maps-Toolkit for Unity のインストール](#plateau-sdk-maps-toolkit-for-unity-のインストール)
-  * [Cesium for Unity のインストール](#cesium-for-unity-のインストール)
-  * [PLATEAU SDK for Unity を使って都市モデルをインポート](#plateau-sdk-for-unity-を使って都市モデルをインポート)
-  * [IfcConvertのインストール](#ifcconvertのインストール)
- 
+  - [Unityでのプロジェクト作成](#unityでのプロジェクト作成)
+  - [PLATEAU SDK-Maps-Toolkit for Unity のインストール](#plateau-sdk-maps-toolkit-for-unity-のインストール)
+  - [Cesium for Unity のインストール](#cesium-for-unity-のインストール)
+  - [IfcConvertのインストール](#ifcconvertのインストール)
+  - [PLATEAU SDK for Unity を使って都市モデルをインポート](#plateau-sdk-for-unity-を使って都市モデルをインポート)
 - [利用手順](#利用手順)
-  * [1. PLATEAUモデル位置合わせ](#1-plateauモデル位置合わせ)
-    + [1-1. シーンを用意する](#1-1-シーンを用意する)
-    + [1-2. 地形モデルを作成する](#1-2-地形モデルを作成する)
-    + [1-3. 地形モデルにPLATEAU Terrainを利用する](#1-3-地形モデルにplateau-terrainを利用する)
-    + [1-4. 地形モデルにラスターをオーバーレイする](#1-4-地形モデルにラスターをオーバーレイする)
-    + [1-5. Cesium for Unity上への3D都市モデルの配置](#1-5-cesium-for-unity上への3d都市モデルの配置)
-    + [1-6. 3D都市モデルのストリーミング設定](#1-6-3d都市モデルのストリーミング設定)
-      
-  * [2. IFCモデルの読み込み](#2-ifcモデルの読み込み)
-    + [2-1. IFCファイルをインポートする](#2-1-ifcファイルをインポートする)
-    + [2-2. 属性情報を付与](#2-2-属性情報を付与)
-    + [2-3. 指定した位置に配置](#2-3-指定した位置に配置)
-    + [2-4. IFC属性情報から自動配置](#2-4-ifc属性情報から自動配置)
-    + [2-5. IFC読み込みの環境設定](#2-5-ifc読み込みの環境設定)
-      
-  * [3. GISデータ読み込み](#3-gisデータ読み込み)
-    
+  - [1. PLATEAUモデル位置合わせ](#1-plateauモデル位置合わせ)
+    - [1-1. シーンを用意する](#1-1-シーンを用意する)
+    - [1-2. 地形モデルを作成する](#1-2-地形モデルを作成する)
+    - [1-3. 地形モデルにPLATEAU Terrainを利用する](#1-3-地形モデルにplateau-terrainを利用する)
+    - [1-4. 地形モデルにラスターをオーバーレイする](#1-4-地形モデルにラスターをオーバーレイする)
+    - [1-5. Cesium for Unity上への3D都市モデルの配置](#1-5-cesium-for-unity上への3d都市モデルの配置)
+    - [1-6. 3D都市モデルのストリーミング設定](#1-6-3d都市モデルのストリーミング設定)
+  - [2. IFCモデルの読み込み](#2-ifcモデルの読み込み)
+    - [2-1. IFCファイルをインポートする](#2-1-ifcファイルをインポートする)
+    - [2-2. 属性情報を付与](#2-2-属性情報を付与)
+    - [2-3. 指定した位置に配置](#2-3-指定した位置に配置)
+    - [2-4. IFC属性情報から自動配置](#2-4-ifc属性情報から自動配置)
+    - [2-5. IFC読み込みの環境設定](#2-5-ifc読み込みの環境設定)
+  - [3. GISデータ読み込み](#3-gisデータ読み込み)
+  - [ライセンス](#ライセンス)
+  - [注意事項/利用規約](#注意事項利用規約)
+
+<!-- /code_chunk_output -->
 
 # セットアップ環境
 ## 検証済環境
 ### 推奨OS環境
-- Windows11
+- Windows 11
 - macOS Ventura 13.2
 
-### Unity Version
+### Unity バージョン
 - Unity 2021.3.30
     - Unity 2021.3系であれば問題なく動作する見込みです。
 
-### Rendering Pipeline
+### レンダリングパイプライン
 - URP
 - HDRP
 
@@ -80,55 +85,38 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 # 導入手順
 
 ## Unityでのプロジェクト作成
-
-Unity Version 2021.3.30により新たにUnityプロジェクトを作成してください。  
-その際のテンプレートとして「3D(URP)」もしくは「3D(HDRP)」を選択してください。
+新しく Unity バージョン 2021.3.30 の Unity プロジェクトを作成してください。
+その際のテンプレートとして「3D (URP)」もしくは「3D (HDRP)」を選択してください。
 
 <img width="493" alt="スクリーンショット 2023-07-12 19 18 33" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b45abddf-fe60-4dbd-9127-910fcb916ed4">
 
-
-## PLATEAU SDK for Unityのインストール
-
-PLATEAU SDK Maps Toolkit for Unityを利用するにあたり、事前にPLATEAU SDKのインストールが必要となります。  
-TarballかGithub URLからインストールをする必要があります。詳細はPLATEAU SDKのドキュメンテーションをご参照ください。  
-[PLATEAU SDK for Unity利用マニュアル](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/)
-
-PLATEAU SDKを利用し、3D都市モデルをUnityシーン上へ配置してください。
-
-
 ## PLATEAU SDK-Maps-Toolkit for Unity のインストール
 
-1. Unityエディタを開き、「Window」メニューから「Package Manager」を選択します。
-2. 「Package Manager」ウィンドウが開いたら、右上にある「＋」ボタンをクリックします。
-3. ドロップダウンメニューから「Add package from tarball...」を選択します。
-4. ファイル選択ダイアログが開いたら、インストールしたいパッケージの.tar.gzファイルを探し、選択します。
-   
+1. Unity エディターを開き、「Window」メニューから「Package Manager」を選択します。
+2. 「Package Manager」ウィンドウの右上にある「＋」ボタンをクリックし、「Add package from tarball...」を選択します。
+3. ファイル選択ダイアログが開いたら、PLATEAU SDK-Maps-Toolkit for Unityパッケージの tarball (.tgzファイル) を選択します。
+
 <img width="493" alt="スクリーンショット 2023-07-12 19 18 42" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/b9076829-b7cb-45db-a5a1-5ce6dbc435b1">
 
-新しいプロジェクトでPLATEAU SDK-Maps-Toolkit for Unityをインストールする際は、入力システムについての確認ダイアログが表示されます場合があります。その場合は「Yes」を選択してください。
-Unityエディタが再起動します。
-
+新規作成したUnityプロジェクトに PLATEAU SDK-Maps-Toolkit for Unity をインストールすると、インストールされている他のパッケージに依存して入力システムについての確認ダイアログが表示される場合があります。その場合は「Yes」を選択してください（Unityエディタが再起動します）。
 
 <img width="500" alt="InputDialog" src="https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity/assets/137732437/120234a9-1457-46f5-9a71-0c43febd44a2">
 
 [ダウンロードリンクはこちら](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/releases)
 
-
 ## Cesium for Unity のインストール
 
-PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能においてCesium for Unity が必要となります。<br>
-Cesium for Unityをインストールしていなくても本Toolkitをご利用できますが、Cesium for Unityに依存する機能は以下のように表示され非Activeとなります。
+PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能の利用には Cesium for Unity が必要です。Cesium for Unityがインストールされていない場合でもその他の機能は利用できますが、Cesium for Unityに依存する機能は以下のように表示され使用不可となります。
 
 <img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/1a2fe244-5672-4737-86cb-5635c6cf2ff6">
 <img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/ec4a3d39-9460-451d-bc01-901be7a72f76">
 <img width="600" alt="top_manual_1_packagemanager" src="https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/assets/127069970/d299e60d-72b3-410e-861b-48b575feaee0">
 
-
-Cesium for Unityは下記のページよりダウンロードしてください。Maps Toolkitではバージョンv1.6.3をサポートしています。
+Cesium for Unityは下記のページよりダウンロードしてください。PLATEAU SDK-Maps-Toolkitではバージョンv1.6.3をサポートしています。
 
 - [Cesium for Unity v1.6.3](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.6.3)
 
-ダウンロードした tgz ファイルは Maps Toolkit を使用する Unity プロジェクトのフォルダ内に配置することを推奨します。Unity プロジェクトのフォルダに配置することで、相対パスでパッケージを参照することができ、フォルダを移動したり別の環境での同じプロジェクトの利用が容易になります。Unityプロジェクト外を参照すると、絶対パスがmanifest.jsonに書き込まれることになり、少し不便になり、依存解決のエラーなどが将来的に発生してしまう可能性があります。
+ダウンロードしたtarball(.tgzファイル)は PLATEAU SDK-Maps-Toolkit を使用する Unity プロジェクトのフォルダ内に配置することを推奨します。Unity プロジェクトのフォルダに配置することで、相対パスでパッケージを参照することができ、フォルダを移動したり別の環境での同じプロジェクトの利用が容易になります。Unityプロジェクト外を参照すると、絶対パスがmanifest.jsonに書き込まれることになり、少し不便になり、依存解決のエラーなどが将来的に発生してしまう可能性があります。
 
 Windows > PackageManagerの「Add package from tarball…」を選択し、ダウンロードした Cesium for Unity の tgz ファイルを選択します。
 
@@ -136,7 +124,7 @@ Windows > PackageManagerの「Add package from tarball…」を選択し、ダ�
 
 
 ## IfcConvertのインストール
-IFC読み込みなどの一部の機能は事前準備としてIfcConvertをインストールする必要があります。対象機能においてMaps ToolkitのUIのメッセージに従い、IfcConvertをインストールしてください。
+IFC読み込みなどの一部の機能の利用にはIfcConvertをインストールする必要があります。該当の機能の使用時に表示されるメッセージに従い、IfcConvertをインストールしてください。
 
 <img width="400" alt="top_manual_1_packagemanager" src="Documentation~/image/maps_toolkit_dialog_ifcconvert.png">
 
@@ -152,7 +140,7 @@ PLATEAU SDK for Unityをインストールしていていない場合は、[マ�
 
 同じく、PLATEAU SDK for Unity[「都市モデルのインポート」の手順](https://project-plateau.github.io/PLATEAU-SDK-for-Unity/manual/ImportCityModels.html)に従って都市モデルをUnityエディターへインポートして、本Toolkitの利用を開始してください。
 
-# **利用手順**
+# 利用手順
 
 上部のメニューより PLATEAU > PLATEAU Toolkit > Maps Toolkit を選択し、Maps Toolkit ウィンドウを開いて、それぞれの機能を利用することができます。
 
