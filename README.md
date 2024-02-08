@@ -102,7 +102,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 <img width="500" alt="maps_install_dialog" src="Documentation~/image/maps_install_dialog.png">
 
-[ダウンロードリンクはこちら](https://github.com/unity-shimizu/PLATEAU-SDK-Maps-Toolkit-for-Unity/releases)
+[ダウンロードリンクはこちら](https://github.com/Project-PLATEAU/PLATEAU-SDK-Maps-Toolkit-for-Unity/releases)
 
 ## Cesium for Unity のインストール
 
