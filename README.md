@@ -84,7 +84,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 # 導入手順
 
 ## Unityでのプロジェクト作成
-新しく Unity バージョン 2021.3.30 の Unity プロジェクトを作成してください。
+新しく Unity バージョン 2021.3.35 の Unity プロジェクトを作成してください。
 その際のテンプレートとして「3D (URP)」もしくは「3D (HDRP)」を選択してください。
 
 <img width="493" alt="maps_select_urp_hdrp" src="Documentation~/image/maps_select_urp_hdrp.png">
