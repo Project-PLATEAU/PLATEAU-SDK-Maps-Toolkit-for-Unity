@@ -70,8 +70,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 - macOS Ventura 13.2
 
 ### Unity バージョン
-- Unity 2021.3.30
-    - Unity 2021.3系であれば問題なく動作する見込みです。
+- Unity 2021.3.35
 
 ### レンダリングパイプライン
 - URP
@@ -80,7 +79,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 **Built-in Rendering Pipelineでは動作しません。**
 
 ## PLATEAU SDKバージョン
-- [PLATEAU SDK for Unity v2.2.1-alpha](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases)
+- [PLATEAU SDK for Unity v2.3.2](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases/tag/v2.3.2)
 
 # 導入手順
 
