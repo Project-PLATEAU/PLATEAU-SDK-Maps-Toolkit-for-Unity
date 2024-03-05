@@ -495,7 +495,7 @@ IFCモデルの項目には、ヒエラルキーからGLBのゲームオブジ�
 
 IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイルをドラック＆ドロップして設定します。
 
-<img width="400" alt="maps_xml_drop" src="Documentation~/image/maps_xml_dropt.png">
+<img width="400" alt="maps_xml_drop" src="Documentation~/image/maps_xml_drop.png">
 
 
 最後に「属性情報を付与」ボタンをクリックするとIFCファイルの属性情報をUnity上のIFCモデルに関連付けされ、位置情報などの属性情報をUnity上で利用することができます。
