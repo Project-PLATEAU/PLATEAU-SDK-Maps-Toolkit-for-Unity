@@ -70,8 +70,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 - macOS Ventura 13.2
 
 ### Unity バージョン
-- Unity 2021.3.30
-    - Unity 2021.3系であれば問題なく動作する見込みです。
+- Unity 2021.3.35
 
 ### レンダリングパイプライン
 - URP
@@ -80,12 +79,12 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 **Built-in Rendering Pipelineでは動作しません。**
 
 ## PLATEAU SDKバージョン
-- [PLATEAU SDK for Unity v2.2.1-alpha](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases)
+- [PLATEAU SDK for Unity v2.3.2](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases/tag/v2.3.2)
 
 # 導入手順
 
 ## Unityでのプロジェクト作成
-新しく Unity バージョン 2021.3.30 の Unity プロジェクトを作成してください。
+新しく Unity バージョン 2021.3.35 の Unity プロジェクトを作成してください。
 その際のテンプレートとして「3D (URP)」もしくは「3D (HDRP)」を選択してください。
 
 <img width="493" alt="maps_select_urp_hdrp" src="Documentation~/image/maps_select_urp_hdrp.png">
@@ -496,7 +495,7 @@ IFCモデルの項目には、ヒエラルキーからGLBのゲームオブジ�
 
 IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイルをドラック＆ドロップして設定します。
 
-<img width="400" alt="maps_xml_drop" src="Documentation~/image/maps_xml_dropt.png">
+<img width="400" alt="maps_xml_drop" src="Documentation~/image/maps_xml_drop.png">
 
 
 最後に「属性情報を付与」ボタンをクリックするとIFCファイルの属性情報をUnity上のIFCモデルに関連付けされ、位置情報などの属性情報をUnity上で利用することができます。
