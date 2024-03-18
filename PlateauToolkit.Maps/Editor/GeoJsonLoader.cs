@@ -18,13 +18,15 @@ namespace PlateauToolkit.Maps.Editor
         GameObject m_PositionMarkerSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         GameObject m_PointDataPrefab;
         GameObject m_PointMarkerDefaultPrefab;
+        bool m_LoopLineRenderer;
 
-        public GeoJsonLoader(GameObject pointDataPrefab = null)
+        public GeoJsonLoader(bool closeLineRenderer, GameObject pointDataPrefab = null)
         {
             m_GeoRef = GameObject.FindObjectOfType<CesiumGeoreference>();
             m_PositionMarkerSphere.transform.SetParent(m_GeoRef.transform);
             m_PositionMarkerSphere.AddComponent<CesiumGlobeAnchor>();
             m_PointDataPrefab = pointDataPrefab;
+            m_LoopLineRenderer = closeLineRenderer;
         }
 
         public bool ReadAll(string pathToFolder, float height, float lineWidth)
@@ -199,7 +201,14 @@ namespace PlateauToolkit.Maps.Editor
             instance.transform.parent = parentObject.transform;
 
             LineRenderer lineRenderer = instance.GetComponent<LineRenderer>();
-            lineRenderer.loop = true;
+            if (m_LoopLineRenderer)
+            {
+                lineRenderer.loop = true;
+            }
+            else
+            {
+                lineRenderer.loop = false;
+            }
             lineRenderer.startWidth = lineWidth;
             lineRenderer.endWidth = lineWidth;
 
