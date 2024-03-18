@@ -66,6 +66,7 @@ namespace PlateauToolkit.Maps.Editor
         string m_GisTargetFolderName;
         int m_SelectedShpRenderingIndex;
         int m_GisModeIndex;
+        bool m_CloseLineRendererLoop;
         static readonly string[] k_ShpRenderingModes = { "Mesh", "Line" };
         static readonly string[] k_GisMode = { "SHP", "GeoJson" };
 
@@ -503,15 +504,16 @@ namespace PlateauToolkit.Maps.Editor
                     {
                         EditorGUILayout.LabelField("描画タイプ", "ジオメトリから判断する");
                     }
-                    if (m_SelectedShpRenderingIndex == 1)
+                    if (m_SelectedShpRenderingIndex == 1 || m_GisModeIndex != 0)
                     {
                         m_LineRendererWidth = EditorGUILayout.FloatField("GISの線幅", m_LineRendererWidth);
+                        m_CloseLineRendererLoop = EditorGUILayout.Toggle("LineRenderer Loop", m_CloseLineRendererLoop);
                     }
                     if (GUILayout.Button("GISデータの読み込み"))
                     {
                         if (m_GisModeIndex == 0)
                         {
-                            using (m_ShapefileRenderManager = new ShapefileRenderManager(m_GisTargetFolderName, m_SelectedShpRenderingIndex, m_GisRenderHeight, m_MergeMesh, m_SupportedEncoding, m_PointDataPrefab))
+                            using (m_ShapefileRenderManager = new ShapefileRenderManager(m_GisTargetFolderName, m_SelectedShpRenderingIndex, m_GisRenderHeight, m_MergeMesh, m_CloseLineRendererLoop, m_SupportedEncoding, m_PointDataPrefab))
                             {
                                 if (m_ShapefileRenderManager.Read(m_LineRendererWidth))
                                 {
@@ -528,7 +530,7 @@ namespace PlateauToolkit.Maps.Editor
                         }
                         else
                         {
-                            using (GeoJsonLoader geoJsonLoader = new GeoJsonLoader(m_PointDataPrefab))
+                            using (GeoJsonLoader geoJsonLoader = new GeoJsonLoader(m_CloseLineRendererLoop, m_PointDataPrefab))
                             {
                                 if (geoJsonLoader.ReadAll(m_GisTargetFolderName, m_GisRenderHeight, m_LineRendererWidth))
                                 {

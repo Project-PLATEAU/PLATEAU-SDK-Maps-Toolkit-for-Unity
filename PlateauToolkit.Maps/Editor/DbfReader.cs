@@ -10,8 +10,8 @@ public class DbfRecord
 
 public enum SupportedEncoding
 {
-    UTF8,      // 0
-    ShiftJIS   // 1
+    ShiftJIS,      // 0
+    UTF8   // 1
 }
 
 namespace PlateauToolkit.Maps.Editor

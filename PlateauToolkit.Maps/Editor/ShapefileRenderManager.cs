@@ -32,16 +32,18 @@ namespace PlateauToolkit.Maps.Editor
         string m_CurrentRenderingObject;
         float m_RenderHeight;
         bool m_MergeMeshes;
+        bool m_LoopLineRenderer;
 
         GameObject m_PointDataPrefab;
 
-        public ShapefileRenderManager(string folderPath, int renderMode, float renderHeight, bool mergeMeshes, SupportedEncoding supportedEncoding, GameObject pointDataPrefab = null)
+        public ShapefileRenderManager(string folderPath, int renderMode, float renderHeight, bool mergeMeshes, bool loopLineRenderer, SupportedEncoding supportedEncoding, GameObject pointDataPrefab = null)
         {
             m_GeoRef = GameObject.FindObjectOfType<CesiumGeoreference>();
             m_FolderPath = folderPath;
             m_RenderMode = renderMode;
             m_RenderHeight = renderHeight;
             m_MergeMeshes = mergeMeshes;
+            m_LoopLineRenderer = loopLineRenderer;
             m_PointDataPrefab = pointDataPrefab;
             m_SupportedStringEncoding = supportedEncoding;
             m_DbfReader = null;
@@ -246,7 +248,14 @@ namespace PlateauToolkit.Maps.Editor
                     lineRenderer.startWidth = lineWidth;  // Set the start width
                     lineRenderer.endWidth = lineWidth;
                     lineRenderer.SetPositions(partPointsWorld.ToArray());
-                    lineRenderer.loop = true;
+                    if (m_LoopLineRenderer)
+                    {
+                        lineRenderer.loop = true;
+                    }
+                    else
+                    {
+                        lineRenderer.loop = false;
+                    }
                     if (!string.IsNullOrEmpty(m_DbfFilePath) && dbfRead && dbfReader.GetRecordLength() == m_ListOfShapes.Count)
                     {
                         AttachMetadata(shpParentInstance, record);
