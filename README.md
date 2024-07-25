@@ -21,6 +21,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 | 更新日時 | 変更内容 |
 | :--- | :--- |
+|  2024/7/25  |  対応バージョンについて追記 |
 |  2024/3/18  |  バグ修正 |
 |  2023/12/25  |  Maps Toolkitを専用パッケージに分割 |
 |  2023/10/28  |  Maps Toolkit初回リリース |
@@ -72,6 +73,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 ### Unity バージョン
 - Unity 2021.3.35
+- Unity 2022.3.25
 
 ### レンダリングパイプライン
 - URP
@@ -80,12 +82,12 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 **Built-in Rendering Pipelineでは動作しません。**
 
 ## PLATEAU SDKバージョン
-- [PLATEAU SDK for Unity v2.3.2](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases/tag/v2.3.2)
+- [PLATEAU SDK for Unity v2.3.2](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases/tag/v2.3.2)以降
 
 # 導入手順
 
 ## Unityでのプロジェクト作成
-新しく Unity バージョン 2021.3.35 の Unity プロジェクトを作成してください。
+新しく Unity プロジェクトを作成してください。
 その際のテンプレートとして「3D (URP)」もしくは「3D (HDRP)」を選択してください。
 
 <img width="493" alt="maps_select_urp_hdrp" src="Documentation~/image/maps_select_urp_hdrp.png">
