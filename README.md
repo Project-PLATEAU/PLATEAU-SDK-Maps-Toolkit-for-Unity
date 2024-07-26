@@ -511,8 +511,6 @@ IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイル�
 
 さらにGLBオブジェクトのインスペクタ上で「Add Component」を押下し、 `Cesium Globe Anchor` を選択してアタッチします。これで自動配置するための準備は完了です。
 
-<img width="400" alt="maps_cga_attach" src="Documentation~/image/maps_cga_attach.png">
-
 読み込んだIFCモデルを指定された緯度、経度、標高に配置します。また回転角度、縮尺を設定することができます。
 
 <img width="600" alt="maps_ifc_posture" src="Documentation~/image/maps_ifc_posture.png">
