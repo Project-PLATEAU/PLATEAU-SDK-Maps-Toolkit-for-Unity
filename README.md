@@ -21,6 +21,7 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 
 | 更新日時 | 変更内容 |
 | :--- | :--- |
+|  2024/7/26  |  対応バージョンについて追記 |
 |  2024/3/18  |  バグ修正 |
 |  2023/12/25  |  Maps Toolkitを専用パッケージに分割 |
 |  2023/10/28  |  Maps Toolkit初回リリース |
@@ -71,7 +72,8 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 - macOS Ventura 13.2
 
 ### Unity バージョン
-- Unity 2021.3.35
+- 動作確認環境：Unity 2021.3.35、Unity 2022.3.25
+- 推奨：Unity 2021.3.35以上
 
 ### レンダリングパイプライン
 - URP
@@ -80,12 +82,12 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
 **Built-in Rendering Pipelineでは動作しません。**
 
 ## PLATEAU SDKバージョン
-- [PLATEAU SDK for Unity v2.3.2](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases/tag/v2.3.2)
+- [PLATEAU SDK for Unity v2.3.2](https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity/releases/tag/v2.3.2)以上
 
 # 導入手順
 
 ## Unityでのプロジェクト作成
-新しく Unity バージョン 2021.3.35 の Unity プロジェクトを作成してください。
+新しく Unity プロジェクトを作成してください。
 その際のテンプレートとして「3D (URP)」もしくは「3D (HDRP)」を選択してください。
 
 <img width="493" alt="maps_select_urp_hdrp" src="Documentation~/image/maps_select_urp_hdrp.png">
@@ -509,8 +511,7 @@ IFC属性情報の項目には、Assets/MeshesフォルダからXMLファイル�
 
 さらにGLBオブジェクトのインスペクタ上で「Add Component」を押下し、 `Cesium Globe Anchor` を選択してアタッチします。これで自動配置するための準備は完了です。
 
-![Untitled 16](https://github.com/unity-shimizu/PLATEAU-SDK-Toolkits-for-Unity-Release2Draft/assets/113009946/d9c9b561-35a1-4a44-9c33-c7dca5afa961)
-
+<img width="400" alt="maps_cga_attach" src="Documentation~/image/maps_cga_attach.png">
 
 読み込んだIFCモデルを指定された緯度、経度、標高に配置します。また回転角度、縮尺を設定することができます。
 
