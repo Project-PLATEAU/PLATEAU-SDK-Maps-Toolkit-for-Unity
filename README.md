@@ -459,13 +459,19 @@ IFC読み込みツールでは読み込んだIFCモデルを選択し、以下�
  
 ### 2-1. IFCファイルをインポートする
 
-「ローカルディスクからIFCファイルを読み込み」を押下し、ファイル選択ウィンドウが表示されるので読み込むIFCファイルを選択します。
-
-以降の手順では、サンプルのIFCファイルを使用して説明します。サンプルのIFCファイルは、次のリンクからダウンロードできます。<br>
-<a href="Documentation~/ifc/sample.ifc" download>サンプルのIFCファイルをダウンロード</a>
-
  PLATEAU都市モデルとBIMモデル（ここではIFCファイル）を活用するにあたって詳細は「[3D都市モデル整備のためのBIM活用マニュアル](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0003_ver03.pdf)」をご参照ください。
  
+
+以降の手順では、サンプルのIFCファイルを使用して説明します。サンプルのIFCファイルは、次のリンクよりダウンロードできます。
+
+[サンプルのIFCファイル](Documentation~/ifc/sample.ifc)  
+
+ページが開いたら、以下のリンクからファイルをダウンロードしてください。
+
+<img width="1000" alt="maps_ifcdownload" src="Documentation~/image/maps_ifc_download.png">
+
+「ローカルディスクからIFCファイルを読み込み」を押下し、ファイル選択ウィンドウが表示されるので読み込むIFCファイルを選択します。
+
 <img width="600" alt="maps_ifcload" src="Documentation~/image/maps_ifcload.png">
 
 コンソール画面が開き、読み込みと変換処理が開始されます。（時間がかかる場合があります。）
