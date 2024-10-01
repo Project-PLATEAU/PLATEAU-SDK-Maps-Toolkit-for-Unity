@@ -22,11 +22,11 @@ namespace PlateauToolkit.Maps
             // Exclude the root object
             foreach (Transform child in rootObj.transform)
             {
-                TraverseComponent(child.gameObject);
+                TraverseGameObjects(child.gameObject);
             }
         }
 
-        static void TraverseComponent(GameObject gameObject)
+        static void TraverseGameObjects(GameObject gameObject)
         {
             if (dictionary.TryGetValue(gameObject.transform.name, out var xmlNode))
             {
@@ -44,7 +44,7 @@ namespace PlateauToolkit.Maps
             
             foreach (Transform child in gameObject.transform)
             {
-                TraverseComponent(child.gameObject);
+                TraverseGameObjects(child.gameObject);
             }
         }
 
