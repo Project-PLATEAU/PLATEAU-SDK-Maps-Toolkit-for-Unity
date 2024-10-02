@@ -22,16 +22,16 @@ namespace PlateauToolkit.Maps
             // Exclude the root object
             foreach (Transform child in rootObj.transform)
             {
-                TraverseGameObjects(child.gameObject);
+                TraverseTransforms(child);
             }
         }
 
-        static void TraverseGameObjects(GameObject gameObject)
+        static void TraverseTransforms(Transform transform)
         {
-            if (dictionary.TryGetValue(gameObject.transform.name, out var xmlNode))
+            if (dictionary.TryGetValue(transform.name, out var xmlNode))
             {
-                XmlElementComponent elementComponent = gameObject.AddComponent<XmlElementComponent>();
-                elementComponent.ID = gameObject.transform.name;
+                XmlElementComponent elementComponent = transform.gameObject.AddComponent<XmlElementComponent>();
+                elementComponent.ID = transform.name;
                 foreach (XmlAttribute attribute in xmlNode.Attributes)
                 {
                     if (attribute.Name != "id")
@@ -42,9 +42,9 @@ namespace PlateauToolkit.Maps
                     elementComponent.ChildElements.Add(childNode.Name + ": " + childNode.OuterXml);
             }
             
-            foreach (Transform child in gameObject.transform)
+            foreach (Transform child in transform)
             {
-                TraverseGameObjects(child.gameObject);
+                TraverseTransforms(child);
             }
         }
 
