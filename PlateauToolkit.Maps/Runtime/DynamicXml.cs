@@ -60,7 +60,7 @@ namespace PlateauToolkit.Maps
 
         static void TraverseNodes(XmlNode node, ref Dictionary<string, XmlNode> dictionary)
         {
-            if (node.Attributes != null && node.Attributes["id"] != null)
+            if (node.Attributes != null && node.Attributes["id"] != null && !dictionary.ContainsKey(node.Attributes["id"].Value))
             {
                 dictionary.Add(node.Attributes["id"].Value, node);
             }
