@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections.Generic;
 using System.Xml;
+using UnityEngine;
 
 namespace PlateauToolkit.Maps
 {
@@ -12,58 +13,60 @@ namespace PlateauToolkit.Maps
             {6679, 11}, {6680, 12}, {6681, 13}, {6682, 14}, {6683, 15},
             {6684, 16}, {6685, 17}, {6686, 18}, {6687, 19}
         };
+        
+        static Dictionary<string, XmlNode> dictionary = new Dictionary<string, XmlNode>();
 
         public static void AttachMetadata(TextAsset xmlFile, GameObject rootObj)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(xmlFile.text);
-
-            // Loop through all GameObjects in scene
-            foreach (Transform childObj in rootObj.transform)
+            dictionary = GetNodeList(xmlFile);
+            // Exclude the root object
+            foreach (Transform child in rootObj.transform)
             {
-                XmlNode foundNode = null;
-                // Traverse through all the nodes recursively
-                TraverseNodes(doc.DocumentElement, childObj.name, ref foundNode);
-
-                if (foundNode != null)
-                {
-                    // If found, create a new XmlElementComponent
-                    XmlElementComponent component = childObj.gameObject.AddComponent<XmlElementComponent>();
-                    component.ID = childObj.name;
-
-                    // Add properties and child elements to the lists
-                    foreach (XmlAttribute attr in foundNode.Attributes)
-                    {
-                        if (attr.Name != "id")
-                        {
-                            component.Properties.Add($"{attr.Name}: {attr.Value}");
-                        }
-                    }
-                    foreach (XmlNode child in foundNode.ChildNodes)
-                    {
-                        component.ChildElements.Add($"{child.Name}: {child.OuterXml}");
-                    }
-                }
+                TraverseTransforms(child);
             }
         }
 
-        static void TraverseNodes(XmlNode node, string targetID, ref XmlNode foundNode)
+        static void TraverseTransforms(Transform transform)
         {
-            if (node.Attributes != null && node.Attributes["id"] != null && node.Attributes["id"].Value == targetID)
+            if (dictionary.TryGetValue(transform.name, out var xmlNode))
             {
-                foundNode = node;
-                return;
-            }
-            else
-            {
-                foreach (XmlNode childNode in node.ChildNodes)
+                XmlElementComponent elementComponent = transform.gameObject.AddComponent<XmlElementComponent>();
+                elementComponent.ID = transform.name;
+                foreach (XmlAttribute attribute in xmlNode.Attributes)
                 {
-                    TraverseNodes(childNode, targetID, ref foundNode);
-                    if (foundNode != null)
-                    {
-                        return;
-                    }
+                    if (attribute.Name != "id")
+                        elementComponent.Properties.Add(attribute.Name + ": " + attribute.Value);
                 }
+
+                foreach (XmlNode childNode in xmlNode.ChildNodes)
+                    elementComponent.ChildElements.Add(childNode.Name + ": " + childNode.OuterXml);
+            }
+            
+            foreach (Transform child in transform)
+            {
+                TraverseTransforms(child);
+            }
+        }
+
+        static Dictionary<string, XmlNode> GetNodeList(TextAsset xmlFile)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(xmlFile.text);
+            Dictionary<string, XmlNode> dictionary = new Dictionary<string, XmlNode>();
+            var root = xmlDocument.DocumentElement;
+            TraverseNodes(root, ref dictionary);
+            return dictionary;
+        }
+
+        static void TraverseNodes(XmlNode node, ref Dictionary<string, XmlNode> dictionary)
+        {
+            if (node.Attributes != null && node.Attributes["id"] != null && !dictionary.ContainsKey(node.Attributes["id"].Value))
+            {
+                dictionary.Add(node.Attributes["id"].Value, node);
+            }
+            foreach (XmlNode childNode in node.ChildNodes)
+            {
+                TraverseNodes(childNode, ref dictionary);
             }
         }
 

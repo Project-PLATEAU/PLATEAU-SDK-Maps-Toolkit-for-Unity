@@ -264,7 +264,8 @@ namespace PlateauToolkit.Maps.Editor
 
                     if (GUILayout.Button("属性情報を付与"))
                     {
-                        if (m_IfcGameObject != null && m_IfcMetaXml != null && m_IfcMetaXml.name == m_IfcFileName)
+                        string ifcPrefabName = PrefabUtility.GetCorrespondingObjectFromSource(m_IfcGameObject)?.name;
+                        if (m_IfcGameObject != null && m_IfcMetaXml != null && m_IfcMetaXml.name == ifcPrefabName)
                         {
                             bool selection = EditorUtility.DisplayDialog(
                                        "属性情報を付与",
