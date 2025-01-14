@@ -14,9 +14,15 @@
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "GeoAPI.CoordinateSystems.dll",
+        "triangle-net.dll",
+        "ProjNET.dll",
+        "Newtonsoft.Json.dll",
+        "GeoAPI.dll"
+    ],
+    "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [
         {
