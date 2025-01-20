@@ -1,8 +1,8 @@
 {
   "name": "com.unity.plateautoolkit.maps",
   "displayName": "PLATEAU SDK-Maps-Toolkit for Unity",
-  "version": "1.0.2",
-  "unity": "2021.3",
+  "version": "1.1.0",
+  "unity": "2022.3",
   "description": "PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報との連携など、地図アプリ開発等を行うためのツールキットです。",
   "keywords": [
     "Toolbox",
@@ -12,6 +12,6 @@
   "category": "utility",
   "samples": [],
   "dependencies": {
-    "com.synesthesias.plateau-unity-sdk": "1.0.0"
+    "com.synesthesias.plateau-unity-sdk": "3.0.0"
   }
 }
