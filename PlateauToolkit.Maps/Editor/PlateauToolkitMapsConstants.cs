@@ -92,7 +92,7 @@ namespace PlateauToolkit.Maps.Editor
         #endregion
 
         #region API urls
-        public static string k_GeoidApiUrl = "http://vldb.gsi.go.jp/sokuchi/surveycalc/geoid/calcgh/cgi/geoidcalc.pl?outputType=json";
+        public static string k_GeoidApiUrl = "https://vldb.gsi.go.jp/sokuchi/surveycalc/geoid/calcgh/cgi/geoidcalc.pl?outputType=json";
         #endregion
 
         #region Help text
