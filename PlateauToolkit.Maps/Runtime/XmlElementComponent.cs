@@ -23,6 +23,11 @@ namespace PlateauToolkit.Maps
         public double Scale { get; set; }
         public int EpsgCode { get; set; }
         public int Jgd2011Id { get; set; }
+        
+        // WGS84座標（IfcSiteから取得した場合）
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public bool IsWgs84 { get; set; } // WGS84座標かどうかのフラグ
 
         // Default constructor
         public IfcCoordinate()
@@ -35,6 +40,9 @@ namespace PlateauToolkit.Maps
             XAbscissa = -1.0;
             XOrdinate = -1.0;
             Scale = 1.0; // Assuming a default scale of 1. Adjust as needed.
+            Latitude = -1.0;
+            Longitude = -1.0;
+            IsWgs84 = false;
         }
     }
 }

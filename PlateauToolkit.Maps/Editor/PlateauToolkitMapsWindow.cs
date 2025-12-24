@@ -380,16 +380,27 @@ namespace PlateauToolkit.Maps.Editor
                             {
                                 m_IfcCoordinateInfo = DynamicXml.GetCoordinateInformation(m_IfcMetaXml);
 
-                                // if these values are -1 then the information either did not exist or the given xml file is not valid xml
-                                if (m_IfcCoordinateInfo.Height == -1d || m_IfcCoordinateInfo.Eastings == -1d || m_IfcCoordinateInfo.Northings == -1d)
+                                // WGS84座標が直接取得できた場合（IfcSiteから）
+                                if (m_IfcCoordinateInfo.IsWgs84 && m_IfcCoordinateInfo.Latitude != -1d && m_IfcCoordinateInfo.Longitude != -1d)
                                 {
-                                    EditorUtility.DisplayDialog(
-                                            "位置合わせ失敗",
-                                            "XMLファイルが有効でない可能性があります。",
-                                            "OK"
-                                            );
+                                    m_IfcWgsPosition = new double3(m_IfcCoordinateInfo.Longitude, m_IfcCoordinateInfo.Latitude, m_IfcCoordinateInfo.Height);
+
+                                    if (m_IfcWgsPosition[0] < -180d || m_IfcWgsPosition[0] > 180d || m_IfcWgsPosition[1] < -90d || m_IfcWgsPosition[1] > 90d)
+                                    {
+                                        EditorUtility.DisplayDialog(
+                                               "位置合わせ失敗",
+                                               "緯度は‐90度から90度まで、経度は‐180度から180度までです。もう一度入力を確認してください。",
+                                               "OK"
+                                               );
+                                    }
+                                    else
+                                    {
+                                        string geoidRequestUri = PlateauToolkitMapsConstants.k_GeoidApiUrl + "&latitude=" + m_IfcWgsPosition.y + "&longitude=" + m_IfcWgsPosition.x;
+                                        PlateauMapsUtilities.RequestGeoidHeight(geoidRequestUri, MoveModel);
+                                    }
                                 }
-                                else
+                                // 投影座標系から取得した場合（IfcPropertySetから）
+                                else if (m_IfcCoordinateInfo.Height != -1d && m_IfcCoordinateInfo.Eastings != -1d && m_IfcCoordinateInfo.Northings != -1d)
                                 {
                                     if (m_IfcCoordinateInfo.Jgd2011Id == -1)
                                     {
@@ -415,10 +426,35 @@ namespace PlateauToolkit.Maps.Editor
                                         else
                                         {
                                             string geoidRequestUri = PlateauToolkitMapsConstants.k_GeoidApiUrl + "&latitude=" + m_IfcWgsPosition.y + "&longitude=" + m_IfcWgsPosition.x;
-
                                             PlateauMapsUtilities.RequestGeoidHeight(geoidRequestUri, MoveModel);
                                         }
                                     }
+                                }
+                                // 座標情報が取得できなかった場合
+                                else
+                                {
+                                    string missingInfo = "";
+                                    if (m_IfcCoordinateInfo.Eastings == -1d && !m_IfcCoordinateInfo.IsWgs84) missingInfo += "・Eastings（東西座標）\n";
+                                    if (m_IfcCoordinateInfo.Northings == -1d && !m_IfcCoordinateInfo.IsWgs84) missingInfo += "・Northings（南北座標）\n";
+                                    if (m_IfcCoordinateInfo.Height == -1d) missingInfo += "・OrthogonalHeight（高さ）\n";
+                                    if (m_IfcCoordinateInfo.Latitude == -1d && !m_IfcCoordinateInfo.IsWgs84) missingInfo += "・RefLatitude（緯度）\n";
+                                    if (m_IfcCoordinateInfo.Longitude == -1d && !m_IfcCoordinateInfo.IsWgs84) missingInfo += "・RefLongitude（経度）\n";
+                                    
+                                    string errorMessage = "XMLファイルから必要な位置情報を取得できませんでした。\n\n";
+                                    if (!string.IsNullOrEmpty(missingInfo))
+                                    {
+                                        errorMessage += "不足している情報:\n" + missingInfo + "\n";
+                                    }
+                                    errorMessage += "XMLファイルに以下のいずれかが含まれているか確認してください:\n";
+                                    errorMessage += "・IfcPropertySet: ePSet_ProjectedCRS, ePSet_MapConversion\n";
+                                    errorMessage += "・IfcSite要素のRefLatitude, RefLongitude, RefElevation属性\n\n";
+                                    errorMessage += "また、XMLファイルの形式が正しいか確認してください。";
+                                    
+                                    EditorUtility.DisplayDialog(
+                                            "位置合わせ失敗",
+                                            errorMessage,
+                                            "OK"
+                                            );
                                 }
                             }
                         }

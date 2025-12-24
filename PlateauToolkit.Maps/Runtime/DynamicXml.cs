@@ -81,77 +81,164 @@ namespace PlateauToolkit.Maps
             {
                 doc.LoadXml(xmlFile.text);
             }
-            catch
+            catch (XmlException ex)
             {
+                Debug.LogError($"XMLファイルの読み込みに失敗しました: {ex.Message}");
                 return ifcCoordinate;
             }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"XMLファイルの処理中にエラーが発生しました: {ex.Message}");
+                return ifcCoordinate;
+            }
+            
             foreach (string targetName in targetNames)
             {
+                // 通常の検索
                 XmlNodeList targetNodes = doc.SelectNodes($"//IfcPropertySet[@Name='{targetName}']");
-
-                foreach (XmlNode targetNode in targetNodes)
+                
+                // 名前空間を考慮しない検索も試行
+                if (targetNodes == null || targetNodes.Count == 0)
                 {
-                    XmlNodeList properties = targetNode.SelectNodes("IfcPropertySingleValue");
-                    foreach (XmlNode property in properties)
+                    targetNodes = doc.SelectNodes($"//*[local-name()='IfcPropertySet' and @Name='{targetName}']");
+                }
+                
+                // 大文字小文字を区別しない検索も試行
+                if (targetNodes == null || targetNodes.Count == 0)
+                {
+                    XmlNodeList allPS = doc.SelectNodes("//IfcPropertySet | //*[local-name()='IfcPropertySet']");
+                    if (allPS != null)
                     {
-                        try
+                        foreach (XmlNode node in allPS)
                         {
-                            string name = property.Attributes["Name"].InnerText;
-                            string nominalValue = property.Attributes["NominalValue"].InnerText;
-                            Debug.Log($"Target: {targetName}, Name: {name}, NominalValue: {nominalValue}");
-                            if (name == "Eastings")
+                            XmlAttribute nameAttr = node.Attributes?["Name"];
+                            if (nameAttr != null && string.Equals(nameAttr.Value, targetName, System.StringComparison.OrdinalIgnoreCase))
                             {
-                                ifcCoordinate.Eastings = double.Parse(nominalValue) / 1000.0;
-                                // We divide by 1000 here is because the value in the XML needs to be
-                                // divided by 1000
-                            }
-                            if (name == "Northings")
-                            {
-                                ifcCoordinate.Northings = double.Parse(nominalValue) / 1000.0;
-                            }
-                            if (name == "OrthogonalHeight")
-                            {
-                                ifcCoordinate.Height = double.Parse(nominalValue);
-                            }
-                            if (name == "XAxisAbscissa")
-                            {
-                                ifcCoordinate.XAbscissa = double.Parse(nominalValue);
-                            }
-                            if (name == "XAxisOrdinate")
-                            {
-                                ifcCoordinate.XOrdinate = double.Parse(nominalValue);
-                            }
-                            if (name == "Scale")
-                            {
-                                ifcCoordinate.Scale = double.Parse(nominalValue);
-                            }
-                            if (targetName == "ePSet_ProjectedCRS" && name == "Name")
-                            {
-                                ifcCoordinate.EpsgCode = -1;
-                                ifcCoordinate.Jgd2011Id = -1;
-                                string[] parts = nominalValue.Split(':');
-
-                                if (parts.Length > 1 && int.TryParse(parts[1], out int epsgNumber))
-                                {
-                                    ifcCoordinate.EpsgCode = epsgNumber;
-                                    for (int i = 0; i < EpsgToJgd2011.GetLength(0); i++)
-                                    {
-                                        if (EpsgToJgd2011[i, 0] == epsgNumber)
-                                        {
-                                            ifcCoordinate.Jgd2011Id = EpsgToJgd2011[i, 1];
-                                        }
-                                    }
-                                }
+                                XmlNodeList properties = node.SelectNodes("IfcPropertySingleValue | .//*[local-name()='IfcPropertySingleValue']");
+                                ProcessProperties(properties, targetName, ref ifcCoordinate);
                             }
                         }
-                        catch
+                    }
+                }
+                else
+                {
+                    foreach (XmlNode targetNode in targetNodes)
+                    {
+                        XmlNodeList properties = targetNode.SelectNodes("IfcPropertySingleValue | .//*[local-name()='IfcPropertySingleValue']");
+                        ProcessProperties(properties, targetName, ref ifcCoordinate);
+                    }
+                }
+            }
+            
+            // IfcPropertySetから情報が取得できなかった場合、IfcSiteから座標情報を取得を試行
+            if (ifcCoordinate.Height == -1d || ifcCoordinate.Eastings == -1d || ifcCoordinate.Northings == -1d)
+            {
+                XmlNodeList siteNodes = doc.SelectNodes("//IfcSite | //*[local-name()='IfcSite']");
+                if (siteNodes != null && siteNodes.Count > 0)
+                {
+                    foreach (XmlNode siteNode in siteNodes)
+                    {
+                        XmlAttribute refLatAttr = siteNode.Attributes?["RefLatitude"];
+                        XmlAttribute refLonAttr = siteNode.Attributes?["RefLongitude"];
+                        XmlAttribute refElevAttr = siteNode.Attributes?["RefElevation"];
+                        
+                        if (refLatAttr != null && refLonAttr != null)
                         {
-                            Debug.Log(property.Attributes["Name"].InnerText);
+                            if (double.TryParse(refLatAttr.Value, out double latitude) &&
+                                double.TryParse(refLonAttr.Value, out double longitude))
+                            {
+                                ifcCoordinate.Latitude = latitude;
+                                ifcCoordinate.Longitude = longitude;
+                                ifcCoordinate.IsWgs84 = true;
+                                
+                                if (refElevAttr != null && double.TryParse(refElevAttr.Value, out double elevation))
+                                {
+                                    ifcCoordinate.Height = elevation;
+                                }
+                                else
+                                {
+                                    ifcCoordinate.Height = 0.0;
+                                }
+                                break;
+                            }
                         }
                     }
                 }
             }
+            
             return ifcCoordinate;
+        }
+        
+        static void ProcessProperties(XmlNodeList properties, string targetName, ref IfcCoordinate ifcCoordinate)
+        {
+            if (properties == null) return;
+            
+            foreach (XmlNode property in properties)
+            {
+                try
+                {
+                    XmlAttribute nameAttr = property.Attributes?["Name"];
+                    XmlAttribute nominalValueAttr = property.Attributes?["NominalValue"];
+                    
+                    if (nameAttr == null || nominalValueAttr == null)
+                    {
+                        continue;
+                    }
+                    
+                    string name = nameAttr.InnerText;
+                    string nominalValue = nominalValueAttr.InnerText;
+                    
+                    if (name == "Eastings")
+                    {
+                        ifcCoordinate.Eastings = double.Parse(nominalValue) / 1000.0;
+                        // We divide by 1000 here is because the value in the XML needs to be
+                        // divided by 1000
+                    }
+                    if (name == "Northings")
+                    {
+                        ifcCoordinate.Northings = double.Parse(nominalValue) / 1000.0;
+                    }
+                    if (name == "OrthogonalHeight")
+                    {
+                        ifcCoordinate.Height = double.Parse(nominalValue);
+                    }
+                    if (name == "XAxisAbscissa")
+                    {
+                        ifcCoordinate.XAbscissa = double.Parse(nominalValue);
+                    }
+                    if (name == "XAxisOrdinate")
+                    {
+                        ifcCoordinate.XOrdinate = double.Parse(nominalValue);
+                    }
+                    if (name == "Scale")
+                    {
+                        ifcCoordinate.Scale = double.Parse(nominalValue);
+                    }
+                    if (targetName == "ePSet_ProjectedCRS" && name == "Name")
+                    {
+                        ifcCoordinate.EpsgCode = -1;
+                        ifcCoordinate.Jgd2011Id = -1;
+                        string[] parts = nominalValue.Split(':');
+
+                        if (parts.Length > 1 && int.TryParse(parts[1], out int epsgNumber))
+                        {
+                            ifcCoordinate.EpsgCode = epsgNumber;
+                            for (int i = 0; i < EpsgToJgd2011.GetLength(0); i++)
+                            {
+                                if (EpsgToJgd2011[i, 0] == epsgNumber)
+                                {
+                                    ifcCoordinate.Jgd2011Id = EpsgToJgd2011[i, 1];
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    string propertyName = property.Attributes?["Name"]?.InnerText ?? "不明";
+                    Debug.LogWarning($"プロパティ '{propertyName}' の解析中にエラーが発生しました: {ex.Message}");
+                }
+            }
         }
     }
 }
