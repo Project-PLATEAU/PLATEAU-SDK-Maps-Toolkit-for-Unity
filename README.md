@@ -62,8 +62,8 @@ PLATEAUの3D都市モデルを用いた空間解析、可視化、建築情報�
     - [2-4. IFC属性情報から自動配置](#2-4-ifc属性情報から自動配置)
     - [2-5. IFC読み込みの環境設定](#2-5-ifc読み込みの環境設定)
   - [3. GISデータ読み込み](#3-gisデータ読み込み)
-  - [ライセンス](#ライセンス)
-  - [注意事項/利用規約](#注意事項利用規約)
+- [ライセンス](#ライセンス)
+- [注意事項/利用規約](#注意事項利用規約)
 
 <!-- /code_chunk_output -->
 
@@ -116,9 +116,9 @@ PLATEAU SDK-Maps-Toolkit for Unityでは一部の機能の利用には Cesium fo
 <img width="600" alt="maps_dependencies_2" src="Documentation~/image/maps_dependencies_2.png">
 <img width="600" alt="maps_dependencies_3" src="Documentation~/image/maps_dependencies_3.png">
 
-Cesium for Unityは下記のページよりダウンロードしてください。PLATEAU SDK-Maps-Toolkitではバージョンv1.6.3をサポートしています。
+Cesium for Unityは下記のページよりダウンロードしてください。PLATEAU SDK-Maps-Toolkitではバージョンv1.16.0をサポートしています。
 
-- [Cesium for Unity v1.6.3](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.6.3)
+- [Cesium for Unity v1.16.0](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.16.0)
 
 ダウンロードしたtarball(.tgzファイル)は PLATEAU SDK-Maps-Toolkit を使用する Unity プロジェクトのフォルダ内に配置することを推奨します。Unity プロジェクトのフォルダに配置することで、相対パスでパッケージを参照することができ、フォルダを移動したり別の環境での同じプロジェクトの利用が容易になります。Unityプロジェクト外を参照すると、絶対パスがmanifest.jsonに書き込まれることになり、少し不便になり、依存解決のエラーなどが将来的に発生してしまう可能性があります。
 
@@ -203,48 +203,35 @@ Cesium 3D Tilesetによって配置された地形モデルにテクスチャを
 Raster Overlay機能はWMS（Web Map Service）形式で配信される画像データを地形モデルにオーバーレイすることができます。
 
 > **Note**
-> [PLATEAU配信サービス（試験運用）](https://github.com/Project-PLATEAU/plateau-streaming-tutorial)ではPLATEAUが提供する航空写真データである[PLATEAU Ortho](https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/ortho/plateau-ortho-streaming.md)をxyzタイルで提供していますが、Cesium for UnityのRaster Overlay機能ではxyzタイルを表示することができません。  
-> そこで、本機能で空中写真を扱えるよう、PLATEAU Orthoと地理院タイルを統合したWMS形式データを用意しました。
+> [PLATEAU配信サービス（試験運用）](https://github.com/Project-PLATEAU/plateau-streaming-tutorial)ではPLATEAUが提供する航空写真データである[PLATEAU Ortho](https://github.com/Project-PLATEAU/plateau-streaming-tutorial/blob/main/ortho/plateau-ortho-streaming.md)をxyzタイルで提供しています。
 >
-> WMS形式データには、PLATEAU Orthoのみの配信（Layers:plateau）とPLATEAU Orthoと地理院タイルを統合したデータ（Layers:plateau_photo）の2種類が利用可能です。
+> PLATEAU Orthoは現在日本の一部地域のみサポートをしているため、CesiumGeoreferenceコンポーネントで東京都などの緯度経度を指定する必要があります。
+> 例：　Latitude 35.68109, Longitude 139.7668　（東京駅周辺）
+> <img width="600" alt="maps_raster_georeference" src="Documentation~/image/maps_raster_georeference.png">
+> 
+> サポート範囲外のエリアは画像のように白く表示されます
 >
-> 配信URLは以下になります。自由にご利用ください。  
-> https://plateauortho.geospatial.jp/mapproxy/service
+> <img width="600" alt="maps_raster_ortho_support_area" src="Documentation~/image/maps_raster_ortho_support_area.png">
 
-「Cesium3DTileset」オブジェクトのインスペクタから「Add Componet」を押下し `Cesium Web Map Service Raster Overlay` コンポーネントを追加します。
 
-<img width="400" alt="maps_wms_raster_overlay" src="Documentation~/image/maps_wms_raster_overlay.png">
 
-Base URLにWMS配信URLを設定します。
+「Cesium3DTileset」オブジェクトのインスペクタから「Add Componet」を押下し `Cesium UrlTemplate RasterOverlay` コンポーネントを追加します。
 
-今回はPLATEAU Ortho WMSを利用するため、
-`https://plateauortho.geospatial.jp/mapproxy/service`を設定します。
+<img width="400" alt="maps_raster_add_component" src="Documentation~/image/maps_raster_add_component.png">
 
-Layersに`plateau`を設定します。
+Template URLにURLを設定します。
+
+今回はPLATEAU Ortho を利用するため
+`https://api.plateauview.mlit.go.jp/tiles/plateau-ortho-2023/{z}/{x}/{reverseY}.png`を設定します。
+
 
 Maximum Levelは最大`19`まで設定可能です（拡大し詳細なテクスチャを表示させたい場合は19に設定）。
 
-<img width="600" alt="maps_wms_raster_overlay_settings" src="Documentation~/image/maps_wms_raster_overlay_settings.png">
+<img width="600" alt="maps_raster_settings" src="Documentation~/image/maps_raster_settings.png">
 
 Cesium3DTilesetの地形モデルにテクスチャが表示されるようになります。
 
-<img width="800" alt="maps_wms_raster_overlay_display" src="Documentation~/image/maps_wms_raster_overlay_display.png">
-
-> **Note**
-> WMS形式データには、PLATEAU Orthoのみの配信（Layers:plateau）とPLATEAU Orthoと地理院タイルを統合したデータ（Layers:plateau_photo）の2種類が利用可能です。
->
-> Lyayersの値を`plateau_photo`に変更すると地理院タイルとPLATEAU航空写真が統合されたラスターをオーバーレイすることができます。
->
-> Base URLには引き続きPLATEAU Ortho WMSの配信URLを設定します。`https://plateauortho.geospatial.jp/mapproxy/service`
-> 
-> PLATEAU Ortho WMSはPLATEAUが独自に取得した空中写真と地理院タイルを統合した全国の空中写真です。 ウェブサイトやソフトウェア、アプリケーション上でリアルタイムに読み込んで利用する場合、出典の明示が必要となります。詳しくは「[地理院タイルのご利用について](https://maps.gsi.go.jp/development/ichiran.html)」をご参照ください。
-> 
-> <img width="557" alt="maps_wms_plateau_photo" src="Documentation~/image/maps_wms_plateau_photo.png">
->
-> 表示結果 <br>
->
-> <img width="750" alt="maps_wms_plateau_photo_display" src="Documentation~/image/maps_wms_plateau_photo_display.png">
-
+<img width="800" alt="maps_raster_view" src="Documentation~/image/maps_raster_view.png">
 
 
 #### 参考：Cesium ionのラスターをオーバーレイに使用する
